@@ -12,8 +12,8 @@ export class JsonService {
 
   constructor(private http: HttpClient) { }
 
-  getGastronomie(): Observable<any> {
-    return this.http.get<any>(`${this.baseURL}/gastronomia`);
+  getGastronomie(page: number = 0, size: number = 10): Observable<any> {
+    return this.http.get<any>(`${this.baseURL}/gastronomia?page=${page}&size=${size}`);
   }
 
 

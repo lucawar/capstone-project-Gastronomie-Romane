@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Route, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 import { AppComponent } from './app.component';
@@ -52,7 +53,7 @@ const routes: Route[] = [
     GastronomiaComponent
   ],
   imports: [
-    BrowserModule,RouterModule.forRoot(routes) , FormsModule, HttpClientModule,
+    BrowserModule,RouterModule.forRoot(routes) , FormsModule, HttpClientModule, NgxPaginationModule
   ],
   providers: [
     {

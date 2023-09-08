@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-4" *ngFor="let gastronomia of gastronomie">
+  <div class="col-md-4" *ngFor="let gastronomia of gastronomie | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: totalElements }">
       <div class="card mb-4">
           <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" class="card-img-top">
           <div class="card-body">
@@ -13,3 +13,10 @@
       </div>
   </div>
 </div>
+
+<!-- Pulsanti di paginazione -->
+<pagination-controls (pageChange)="loadPage($event)"></pagination-controls>
+
+
+
+

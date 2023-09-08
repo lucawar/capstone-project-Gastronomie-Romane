@@ -10,18 +10,27 @@ import { Gastronomia } from 'src/app/models/gastronomia';
 export class GastronomiaComponent implements OnInit {
 
   gastronomie: Gastronomia[] = [];
+  public currentPage: number = 1;
+  public totalElements: number = 0;
+
+
 
   constructor(private jsonService: JsonService) { }
 
   ngOnInit(): void {
-    this.jsonService.getGastronomie().subscribe(data => {
-      console.log(data); // Per ispezionare la risposta
-      if (Array.isArray(data.content)) {
-        this.gastronomie = data.content;
-      } else {
-        console.error('Formato dati inaspettato:', data);
-      }
-    }, error => {
-      console.error('Errore nella chiamata al servizio:', error);
-    });
-}}
+    this.loadPage(this.currentPage);
+}
+loadPage(page: number): void {
+  this.jsonService.getGastronomie(page - 1, 10).subscribe(data => {
+    console.log(data);
+    if (Array.isArray(data.content)) {
+      this.gastronomie = data.content;
+    } else {
+      console.error('Formato dati inaspettato:', data);
+    }
+  }, error => {
+    console.error('Errore nella chiamata al servizio:', error);
+  });
+}
+}
+
