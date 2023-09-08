@@ -1,10 +1,34 @@
-<div class="register-form">
-  <input [(ngModel)]="username" placeholder="Username" />
-  <input [(ngModel)]="name" placeholder="Nome" />
-  <input [(ngModel)]="surname" placeholder="Cognome" />
-  <input [(ngModel)]="email" placeholder="Email" />
-  <input [(ngModel)]="password" type="password" placeholder="Password" />
-  <input [(ngModel)]="numeroTelefono" placeholder="Numero di Telefono" />
-  <button (click)="register()">Registrati</button>
-  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+<div class="register-container">
+  <div class="register-header">
+      <h2>Registrazione al Portale Gastronomia</h2>
+      <p>Unisciti a noi e scopri le migliori gastronomie!</p>
+  </div>
+  <div class="register-form">
+      <div class="form-group">
+          <label for="username">Username:</label>
+          <input id="username" [(ngModel)]="username" placeholder="Inserisci il tuo username" />
+      </div>
+      <div class="form-group">
+          <label for="name">Nome:</label>
+          <input id="name" [(ngModel)]="name" placeholder="Inserisci il tuo nome" />
+      </div>
+      <div class="form-group">
+          <label for="surname">Cognome:</label>
+          <input id="surname" [(ngModel)]="surname" placeholder="Inserisci il tuo cognome" />
+      </div>
+      <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" [(ngModel)]="email" placeholder="Inserisci la tua email" />
+      </div>
+      <div class="form-group">
+          <label for="password">Password:</label>
+          <input id="password" [(ngModel)]="password" type="password" placeholder="Inserisci la tua password" />
+      </div>
+      <div class="form-group">
+          <label for="numeroTelefono">Numero di Telefono:</label>
+          <input id="numeroTelefono" [(ngModel)]="numeroTelefono" placeholder="Inserisci il tuo numero di telefono" />
+      </div>
+      <button class="register-button" (click)="register()">Registrati</button>
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
 </div>

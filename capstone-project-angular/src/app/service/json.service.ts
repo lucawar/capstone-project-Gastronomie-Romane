@@ -8,7 +8,7 @@ import { Gastronomia } from '../models/gastronomia';
 })
 export class JsonService {
 
-  private baseURL = 'http://localhost:3001';  // Cambia con l'URL di base del tuo API
+  private baseURL = 'http://localhost:3001';  // INDIRIZZO BACK-END
 
   constructor(private http: HttpClient) { }
 

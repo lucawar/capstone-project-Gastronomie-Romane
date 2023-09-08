@@ -1,10 +1,15 @@
-<ul>
-  <li *ngFor="let gastronomia of gastronomie">
-    Nome: {{ gastronomia.nome }},
-    Indirizzo: {{ gastronomia.indirizzo }},
-    Telefono: {{ gastronomia.telefono }},
-    Tipo: {{ gastronomia.tipoGastronomia }},
-    immagine: {{ gastronomia.imageUrl }}
-    <!-- e così via per le altre proprietà -->
-  </li>
-</ul>
+<div class="row">
+  <div class="col-md-4" *ngFor="let gastronomia of gastronomie">
+      <div class="card mb-4">
+          <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" class="card-img-top">
+          <div class="card-body">
+              <h5 class="card-title">{{ gastronomia.nome }}</h5>
+              <p class="card-text">
+                  Indirizzo: {{ gastronomia.indirizzo }}<br>
+                  Telefono: {{ gastronomia.telefono }}<br>
+                  Tipo: {{ gastronomia.tipoGastronomia }}
+              </p>
+          </div>
+      </div>
+  </div>
+</div>
