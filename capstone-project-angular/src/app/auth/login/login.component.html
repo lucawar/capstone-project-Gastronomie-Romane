@@ -1,0 +1,7 @@
+
+<div class="login-form">
+  <input [(ngModel)]="email" placeholder="Email" />
+  <input [(ngModel)]="password" type="password" placeholder="Password" />
+  <button (click)="login()">Accedi</button>
+  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+</div>
