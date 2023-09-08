@@ -1,7 +1,19 @@
 
-<div class="login-form">
-  <input [(ngModel)]="email" placeholder="Email" />
-  <input [(ngModel)]="password" type="password" placeholder="Password" />
-  <button (click)="login()">Accedi</button>
-  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+<div class="login-container">
+  <div class="login-header">
+      <h2>Accedi al Portale Gastronomia</h2>
+      <p>Esplora le migliori gastronomie della tua zona!</p>
+  </div>
+  <div class="login-form">
+      <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" [(ngModel)]="email" placeholder="Inserisci la tua email" />
+      </div>
+      <div class="form-group">
+          <label for="password">Password:</label>
+          <input id="password" [(ngModel)]="password" type="password" placeholder="Inserisci la tua password" />
+      </div>
+      <button class="login-button" (click)="login()">Accedi</button>
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
 </div>
