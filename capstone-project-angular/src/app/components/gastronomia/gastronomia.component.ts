@@ -11,7 +11,7 @@ export class GastronomiaComponent implements OnInit {
 
   gastronomie: Gastronomia[] = [];
   public currentPage: number = 1;
-  public totalElements: number = 0;
+  public totalElements: number = 20;
 
 
 

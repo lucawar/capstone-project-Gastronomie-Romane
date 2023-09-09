@@ -4,9 +4,14 @@
   align-items: center;
   height: 100vh;
   background-color: #f2f2f2;
+  font-family: 'Cinzel', serif; /* aggiunto il font qui */
+  background-image: url('https://www.ilgiornaledelcibo.it/wp-content/uploads/2016/09/aroma-palazzo-manfredi-roma.jpg');
+  background-size: cover;  /* Questa proprietà fa in modo che l'immagine copra l'intera area del contenitore */
+  background-repeat: no-repeat;  /* Questa proprietà impedisce la ripetizione dell'immagine */
+  background-position: center center;  /* Questa proprietà centra l'immagine sia verticalmente che orizzontalmente */
 
   .content-box {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.8);  /* Questo rende leggermente trasparente il box bianco per far risaltare meglio il testo sullo sfondo */
       padding: 40px 60px;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -21,13 +26,18 @@
           font-size: 1.5rem;
 
           .action-link {
-              color: #007bff;
-              text-decoration: none;
-              margin: 0 5px;
+            /* Bronzo antico come colore di base */
+            color: #cd7f32;
 
-              &:hover {
-                  text-decoration: underline;
-              }
+            &:hover {
+                /* Oro come colore al passaggio del mouse */
+                color: #ffd700;
+                text-decoration: underline;
+            }
+            &:active {
+              /* Rosso Pompeiano come colore al click */
+              color: #d10000;
+          }
           }
       }
   }

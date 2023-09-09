@@ -1,37 +1,31 @@
-<nav class="navbar navbar-expand-lg bg-dark">
+<nav class="navbar navbar-expand-lg" style="background-color: #b08d57">
   <div class="container-fluid">
-
-     <a class="navbar-brand" href="#"></a>
-     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-     </button>
-     <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
-       <ul class="navbar-nav">
-         <li>
-           <a class="nav-link link-danger text-white active" aria-current="page" [routerLink]="['/']"
-             routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-         </li>
-         <li>
-           <a class="nav-link link-danger text-white" [routerLink]="['login']" routerLinkActive="active">Login</a>
-         </li>
-         <li>
-           <a class="nav-link link-danger text-white" aria-current="page" [routerLink]="['register']"
-             routerLinkActive="active">Registrati</a>
-         </li>
-         <li>
-          <a class="nav-link link-danger text-white" aria-current="page" [routerLink]="['gastronomia']"
-            routerLinkActive="active">Gastronomie</a>
+    <a class="navbar-brand" href="#">
+      <!-- iserire un logo qui uno volta scelto -->
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
+      <ul class="navbar-nav">
+        <li>
+          <a class="nav-link text-white" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
         </li>
-
-          <li *ngIf="isLoggedIn">
-            <button type="button" class="btn btn-danger ms-2" (click)="logout()">Log out</button>
+        <li>
+          <a class="nav-link text-white" [routerLink]="['login']" routerLinkActive="active">Login</a>
         </li>
-       </ul>
-       <div class="d-flex">
-
+        <li>
+          <a class="nav-link text-white" [routerLink]="['register']" routerLinkActive="active">Registrati</a>
+        </li>
+        <li>
+          <a class="nav-link text-white" [routerLink]="['gastronomia']" routerLinkActive="active">Gastronomie</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <button *ngIf="isLoggedIn" type="button" class="btn custom-logout-button ms-2" (click)="logout()">Log out</button>
       </div>
-     </div>
-   </div>
- </nav>
+    </div>
+  </div>
+</nav>
 
