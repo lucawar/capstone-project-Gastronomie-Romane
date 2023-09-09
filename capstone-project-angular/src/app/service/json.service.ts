@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Gastronomia } from '../models/gastronomia';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,4 +18,15 @@ export class JsonService {
   }
 
 
+  getGastronomieByTipo(tipo: string): Observable<any> {
+    return this.http.get(`${this.baseURL}/gastronomia/cerca?tipo=${tipo}`);
+  }
+
+  getGastronomieByPrezzo(minPrice: string, maxPrice: string): Observable<any> {
+    return this.http.get(`${this.baseURL}/gastronomia/cerca?prezzoMin=${minPrice}&prezzoMax=${maxPrice}`);
+  }
+
+  getMenuByGastronomia(gastronomiaId: string): Observable<any> {
+    return this.http.get(`${this.baseURL}/gastronomia/${gastronomiaId}/menu`);
+  }
 }

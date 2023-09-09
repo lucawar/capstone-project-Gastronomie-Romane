@@ -13,6 +13,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { GastronomiaComponent } from './components/gastronomia/gastronomia.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 const routes: Route[] = [
   {
@@ -50,7 +51,8 @@ const routes: Route[] = [
     RegisterComponent,
     NavbarComponent,
     HomeComponent,
-    GastronomiaComponent
+    GastronomiaComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(routes) , FormsModule, HttpClientModule, NgxPaginationModule

@@ -1,5 +1,19 @@
+<select [(ngModel)]="selezionaTipo" (change)="getGastronomieByTipo()">
+  <option value="">Tutte le gastronomie</option>
+  <option *ngFor="let tipoGastronomie of tipo">{{ tipoGastronomie }}</option>
+</select>
+
+
+<select [(ngModel)]="selezionaPriceRange" (change)="getGastronomiaByPriceRange()">
+  <option value="">Tutti i prezzi</option>
+  <option value="0-50">0 - 50</option>
+  <option value="50-100">50 - 100</option>
+  <option value="100-150">100 - 150</option>
+
+</select>
+
 <div class="row">
-  <div class="col-md-4" *ngFor="let gastronomia of gastronomie | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: totalElements }">
+  <div class="col-md-4" *ngFor="let gastronomia of gastronomie">
       <div class="card mb-4">
           <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" class="card-img-top">
           <div class="card-body">
@@ -7,16 +21,24 @@
               <p class="card-text">
                   Indirizzo: {{ gastronomia.indirizzo }}<br>
                   Telefono: {{ gastronomia.telefono }}<br>
-                  Tipo: {{ gastronomia.tipoGastronomia }}
+                  Tipo: {{ gastronomia.tipoGastronomia }}<br>
+                  Prezzo medio: {{ gastronomia.prezzoMedio }}
               </p>
+                <!-- Pulsante per visualizzare il menu della gastronomia -->
+                <button (click)="loadMenuForGastronomia(gastronomia.id)">Visualizza Menu</button>
+
+                <!-- Visualizza il menu della gastronomia una volta caricato -->
+                <app-menu *ngIf="gastronomia.id === selectedGastronomiaId && selectedMenu" [menuItems]="selectedMenu.piatti"></app-menu>
           </div>
       </div>
   </div>
 </div>
 
-<!-- Pulsanti di paginazione -->
-<pagination-controls (pageChange)="loadPage($event)"></pagination-controls>
 
+<div class="pagination-buttons">
+  <button class="btn-custom" [disabled]="page <= 0" (click)="previousPage()">Precedente</button>
+  <button class="btn-custom" (click)="nextPage()">Successivo</button>
+</div>
 
 
 
