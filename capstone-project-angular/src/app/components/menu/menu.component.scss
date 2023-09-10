@@ -1,0 +1,29 @@
+.menu-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #eee;
+}
+
+.menu-list li {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-item-name {
+  font-weight: bold;
+  flex: 3;
+}
+
+.menu-item-description {
+  flex: 4;
+  color: #888;
+}
+
+.menu-item-price {
+  flex: 1;
+  text-align: right;
+}

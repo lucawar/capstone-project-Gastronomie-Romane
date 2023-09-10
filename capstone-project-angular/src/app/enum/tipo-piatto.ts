@@ -1,0 +1,8 @@
+export enum TipoPiatto {
+
+  ANTIPASTI = 'ANTIPASTI',
+  PRIMI = 'PRIMI',
+  SECONDI = 'SECONDI',
+  DESSERT = 'DESSERT',
+  BEVANDE = 'BEVANDE'
+}

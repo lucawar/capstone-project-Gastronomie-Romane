@@ -18,9 +18,7 @@ export class GastronomiaComponent implements OnInit {
   public selezionaPriceRange: string = '';
   selectedMenu: any = null;
   selectedGastronomiaId: string | null = null;
-
-
-
+  isLoading: boolean = false;
 
 
   constructor(private jsonService: JsonService) { }
@@ -41,6 +39,7 @@ previousPage() {
 }
 
 loadGastronomia(): void {
+  this.isLoading = true;
   this.jsonService.getGastronomie(this.page, 10).subscribe(data => {
     console.log(data);
     if (Array.isArray(data.content)) {
@@ -48,12 +47,15 @@ loadGastronomia(): void {
     } else {
       console.error('Formato dati inaspettato:', data);
     }
+    this.isLoading = false;
   }, error => {
     console.error('Errore nella chiamata al servizio:', error);
+    this.isLoading = false;
   });
 }
 
 getGastronomieByTipo(): void {
+  this.isLoading = true;
   if (this.selezionaTipo) {
     this.jsonService.getGastronomieByTipo(this.selezionaTipo).subscribe(data => {
       if (Array.isArray(data.content)) {
@@ -61,8 +63,10 @@ getGastronomieByTipo(): void {
       } else {
         console.error('Formato dati inaspettato:', data);
       }
+      this.isLoading = false;
     }, error => {
       console.error('Errore nella chiamata al servizio:', error);
+      this.isLoading = false;
     });
   } else {
     this.loadGastronomia();
@@ -70,6 +74,7 @@ getGastronomieByTipo(): void {
 }
 
 getGastronomiaByPriceRange(): void {
+  this.isLoading = true;
   if (this.selezionaPriceRange) {
     const [minPrice, maxPrice] = this.selezionaPriceRange.split('-');
     this.jsonService.getGastronomieByPrezzo(minPrice, maxPrice).subscribe(data => {
@@ -78,8 +83,10 @@ getGastronomiaByPriceRange(): void {
       } else {
         console.error('Formato dati inaspettato:', data);
       }
+      this.isLoading = false;
     }, error => {
       console.error('Errore nella chiamata al servizio:', error);
+      this.isLoading = false;
     });
   } else {
     this.loadGastronomia();
@@ -87,13 +94,19 @@ getGastronomiaByPriceRange(): void {
 }
 
 loadMenuForGastronomia(gastronomiaId: string): void {
+  // Se il menu è già selezionato e visualizzato, nascondilo e esci dalla funzione
+  if (this.selectedGastronomiaId === gastronomiaId && this.selectedMenu) {
+    this.selectedMenu = null;
+    this.selectedGastronomiaId = null;
+    return;
+  }
+
+  // Altrimenti, carica il menu
   this.selectedGastronomiaId = gastronomiaId;
   this.jsonService.getMenuByGastronomia(gastronomiaId).subscribe(data => {
     console.log('Menu ricevuto:', data);
-      this.selectedMenu = data;
+    this.selectedMenu = data;
   }, error => {
-      console.error('Errore nella chiamata al servizio:', error);
+    console.error('Errore nella chiamata al servizio:', error);
   });
-}
-}
-
+}}

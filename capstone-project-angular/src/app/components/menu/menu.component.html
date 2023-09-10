@@ -1,6 +1,14 @@
-<h3>Menu</h3>
-<ul>
-  <li *ngFor="let elemento of menuItems">
-    {{ elemento.nome }} ({{ elemento.tipoPiatto }}) - {{ elemento.prezzo }}€ - {{ elemento.descrizione }}
-  </li>
-</ul>
+<div class="container-fluid">
+<div *ngFor="let category of categories">
+  <h6>{{ category }}</h6>
+  <ng-container *ngIf="organizzaMenu[category] as categoryItems">
+    <ul class="menu-list" *ngIf="categoryItems.length > 0">
+      <li *ngFor="let item of categoryItems">
+       <p>{{ item.nome }}</p><br>
+       <p>({{ item.descrizione }})</p><br>
+       <p>{{ item.prezzo }}€</p>
+      </li>
+    </ul>
+  </ng-container>
+</div>
+</div>

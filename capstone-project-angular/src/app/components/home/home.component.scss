@@ -26,16 +26,16 @@
           font-size: 1.5rem;
 
           .action-link {
-            /* Bronzo antico come colore di base */
+
             color: #cd7f32;
 
             &:hover {
-                /* Oro come colore al passaggio del mouse */
+
                 color: #ffd700;
                 text-decoration: underline;
             }
             &:active {
-              /* Rosso Pompeiano come colore al click */
+
               color: #d10000;
           }
           }

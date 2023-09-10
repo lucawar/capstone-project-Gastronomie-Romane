@@ -1,3 +1,4 @@
+
 .register-container {
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -5,6 +6,7 @@
   max-width: 450px;
   margin: 30px auto;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Cinzel', serif;
 }
 
 .register-header {
@@ -31,7 +33,7 @@
 }
 
 .register-button {
-  background-color: #ff6347;
+  background-color: #b22222;
   color: #ffffff;
   border: none;
   border-radius: 4px;
@@ -43,11 +45,11 @@
 }
 
 .register-button:hover {
-  background-color: #ff4500;
+  background-color: #b08d57;
 }
 
 .error-message {
-  color: #e74c3c;
+  color: #b22222;
   margin-top: 20px;
   text-align: center;
 }

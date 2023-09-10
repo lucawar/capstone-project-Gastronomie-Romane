@@ -1,9 +1,27 @@
 .custom-logout-button {
-  background-color: #DC143C; /* Questo è il colore rosso pompeiano */
-  color: #fff; /* Colore del testo */
-  border: none; /* Rimuovi il bordo */
+  background-color: #8B0000;
+  color: #fff;
+  border: none;
 }
 
 .custom-logout-button:hover {
-  background-color: #8B0000; /* Cambia il colore al passaggio del mouse, se lo desideri */
+  background-color: #DC143C;
+}
+
+.navbar-custom {
+  background-color: #b08d57;
+  height: 70px !important;
+}
+
+.navbar-nav li {
+  display: flex;
+  align-items: center;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.welcomeMessage {
+  margin-right: 20px;
 }

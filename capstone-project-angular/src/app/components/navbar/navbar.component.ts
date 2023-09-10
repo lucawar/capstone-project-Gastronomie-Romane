@@ -9,14 +9,22 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  user: any = null;
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.authService.isLoggedIn()) {
+      this.authService.getCurrentUser().subscribe(user => {
+        console.log("Risposta API:", user);
+        this.user = user;
+      });
+    }
   }
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);  // reindirizza all'utente alla pagina di login dopo il logout
+    this.router.navigate(['/login']);
   }
 
   get isLoggedIn(): boolean {

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  currentUser: any = null;
 
   constructor(private http: HttpClient) { }
 
@@ -32,7 +34,7 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem('token');
-
+    alert("CIAO,RIEFFETTUA IL LOGIN PER ACCEDERE")
     return this.http.post<any>('http://localhost:3001/auth/logout' ,null)
 
 
@@ -45,4 +47,18 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('token');
   }
+
+  getCurrentUser(): Observable<any> {
+    if (this.currentUser) {
+      return of(this.currentUser);
+    }
+      return this.http.get<any>('http://localhost:3001/users/current').pipe(
+      map(response => {
+        console.log("Risposta API:", response);
+        this.currentUser = response.user;
+        return this.currentUser;
+      })
+    );
+  }
 }
+

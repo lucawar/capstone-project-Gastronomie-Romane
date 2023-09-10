@@ -1,3 +1,9 @@
+<div class="container-fluid">
+<div *ngIf="isLoading" class="spinner-container">
+  <div class="spinner" style="border: 16px solid #f3f3f3; border-top: 16px solid #b22222; border-radius: 50%; width: 50px; height: 50px; animation: spin 2s linear infinite;"></div>
+</div>
+
+
 <select [(ngModel)]="selezionaTipo" (change)="getGastronomieByTipo()">
   <option value="">Tutte le gastronomie</option>
   <option *ngFor="let tipoGastronomie of tipo">{{ tipoGastronomie }}</option>
@@ -12,8 +18,9 @@
 
 </select>
 
+<div class="container-fluid">
 <div class="row">
-  <div class="col-md-4" *ngFor="let gastronomia of gastronomie">
+  <div class="col-md-4 mt-3" *ngFor="let gastronomia of gastronomie">
       <div class="card mb-4">
           <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" class="card-img-top">
           <div class="card-body">
@@ -24,21 +31,21 @@
                   Tipo: {{ gastronomia.tipoGastronomia }}<br>
                   Prezzo medio: {{ gastronomia.prezzoMedio }}
               </p>
-                <!-- Pulsante per visualizzare il menu della gastronomia -->
+                <!-- button per visualizzare il menu della gastronomia -->
                 <button (click)="loadMenuForGastronomia(gastronomia.id)">Visualizza Menu</button>
 
-                <!-- Visualizza il menu della gastronomia una volta caricato -->
+                <!-- Visualizza il menu della gastronomia una volta spinto il button -->
                 <app-menu *ngIf="gastronomia.id === selectedGastronomiaId && selectedMenu" [menuItems]="selectedMenu.piatti"></app-menu>
           </div>
       </div>
   </div>
 </div>
-
+</div>
 
 <div class="pagination-buttons">
   <button class="btn-custom" [disabled]="page <= 0" (click)="previousPage()">Precedente</button>
   <button class="btn-custom" (click)="nextPage()">Successivo</button>
 </div>
-
+</div>
 
 
