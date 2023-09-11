@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,6 @@ export class AuthService {
     const credentials = { email, password };
     return this.http.post<any>('http://localhost:3001/auth/login', credentials)
       .pipe(map(response => {
-        console.log('Server Response:', response);
         if (response.accessToken) {
           console.log('Token:', response.accessToken);
           localStorage.setItem('token', response.accessToken);
@@ -35,7 +36,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     alert("CIAO,RIEFFETTUA IL LOGIN PER ACCEDERE")
-    return this.http.post<any>('http://localhost:3001/auth/logout' ,null)
+
 
 
   }
@@ -50,15 +51,23 @@ export class AuthService {
 
   getCurrentUser(): Observable<any> {
     if (this.currentUser) {
-      return of(this.currentUser);
+        return of(this.currentUser);
     }
-      return this.http.get<any>('http://localhost:3001/users/current').pipe(
-      map(response => {
-        console.log("Risposta API:", response);
-        this.currentUser = response.user;
-        return this.currentUser;
-      })
+
+    return this.http.get<any>('http://localhost:3001/users/current').pipe(
+        map(response => {
+            console.log("Risposta API:", response);
+            if (!response) {
+                throw new Error('Invalid API response');
+            }
+            this.currentUser = response;
+            return this.currentUser;
+        }),
+        catchError(error => {
+            console.error("Errore nell'API:", error);
+            return throwError(error);
+        })
     );
-  }
-}
+}}
+
 

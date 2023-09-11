@@ -9,17 +9,19 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  user: any = null;
+  user: any;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    if (this.authService.isLoggedIn()) {
-      this.authService.getCurrentUser().subscribe(user => {
-        console.log("Risposta API:", user);
-        this.user = user;
-      });
-    }
+    this.authService.getCurrentUser().subscribe(response => {
+      console.log("Risposta API:", response);
+      if (response) {
+          this.user = response;
+      } else {
+          console.error("Risposta API non valida.");
+      }
+  });
   }
 
   logout() {
@@ -27,7 +29,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  get isLoggedIn(): boolean {
+  isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
 }
