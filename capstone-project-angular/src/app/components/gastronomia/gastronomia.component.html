@@ -31,11 +31,18 @@
                   Tipo: {{ gastronomia.tipoGastronomia }}<br>
                   Prezzo medio: {{ gastronomia.prezzoMedio }}
               </p>
+
                 <!-- button per visualizzare il menu della gastronomia -->
                 <button (click)="loadMenuForGastronomia(gastronomia.id)">Visualizza Menu</button>
 
                 <!-- Visualizza il menu della gastronomia una volta spinto il button -->
                 <app-menu *ngIf="gastronomia.id === selectedGastronomiaId && selectedMenu" [menuItems]="selectedMenu.piatti"></app-menu>
+
+<!-- button per visualizzare le recensioni della gastronomia -->
+<button (click)="loadRecensioniForGastronomia(gastronomia.id)">Visualizza Recensioni</button>
+
+<!-- Visualizza le recensioni della gastronomia una volta spinto il button -->
+<app-recensione *ngIf="gastronomia.id === recensioneForGastronomiaId" [recensioni]="selectedRecensioni"></app-recensione>
           </div>
       </div>
   </div>

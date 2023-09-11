@@ -30,4 +30,8 @@ export class JsonService {
     return this.http.get(`${this.baseURL}/gastronomia/${gastronomiaId}/menu`);
   }
 
+  getRecensioniByGastronomia(gastronomiaId: string): Observable<any> {
+    return this.http.get(`${this.baseURL}/gastronomia/${gastronomiaId}/recensioni`);
+}
+
 }

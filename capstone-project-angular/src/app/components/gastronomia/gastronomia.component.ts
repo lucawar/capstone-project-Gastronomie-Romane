@@ -19,7 +19,8 @@ export class GastronomiaComponent implements OnInit {
   selectedMenu: any = null;
   selectedGastronomiaId: string | null = null;
   isLoading: boolean = false;
-  nuovaRecensione: string = '';
+  recensioneForGastronomiaId: string | null = null;
+  selectedRecensioni: any[] = [];
 
 
   constructor(private jsonService: JsonService) { }
@@ -95,14 +96,11 @@ getGastronomiaByPriceRange(): void {
 }
 
 loadMenuForGastronomia(gastronomiaId: string): void {
-  // Se il menu è già selezionato e visualizzato, nascondilo e esci dalla funzione
   if (this.selectedGastronomiaId === gastronomiaId && this.selectedMenu) {
     this.selectedMenu = null;
     this.selectedGastronomiaId = null;
     return;
   }
-
-  // Altrimenti, carica il menu
   this.selectedGastronomiaId = gastronomiaId;
   this.jsonService.getMenuByGastronomia(gastronomiaId).subscribe(data => {
     console.log('Menu ricevuto:', data);
@@ -112,7 +110,22 @@ loadMenuForGastronomia(gastronomiaId: string): void {
   });
 }
 
-
+loadRecensioniForGastronomia(gastronomiaId: string): void {
+  if (this.recensioneForGastronomiaId === gastronomiaId) {
+    this.recensioneForGastronomiaId = null;
+    this.selectedRecensioni = [];
+    return;
+  }
+  this.recensioneForGastronomiaId = gastronomiaId;
+  this.jsonService.getRecensioniByGastronomia(gastronomiaId).subscribe(data => {
+    console.log('Recensioni ricevute:', data);
+    this.selectedRecensioni = data;
+  }, error => {
+    console.error('Errore nella chiamata al servizio:', error);
+  });
+}
 
 }
+
+
 
