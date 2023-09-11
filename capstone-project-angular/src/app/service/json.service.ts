@@ -29,4 +29,5 @@ export class JsonService {
   getMenuByGastronomia(gastronomiaId: string): Observable<any> {
     return this.http.get(`${this.baseURL}/gastronomia/${gastronomiaId}/menu`);
   }
+
 }

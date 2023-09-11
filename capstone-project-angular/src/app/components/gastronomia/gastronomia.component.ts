@@ -19,6 +19,7 @@ export class GastronomiaComponent implements OnInit {
   selectedMenu: any = null;
   selectedGastronomiaId: string | null = null;
   isLoading: boolean = false;
+  nuovaRecensione: string = '';
 
 
   constructor(private jsonService: JsonService) { }
@@ -109,4 +110,9 @@ loadMenuForGastronomia(gastronomiaId: string): void {
   }, error => {
     console.error('Errore nella chiamata al servizio:', error);
   });
-}}
+}
+
+
+
+}
+
