@@ -21,6 +21,10 @@ export class GastronomiaComponent implements OnInit {
   isLoading: boolean = false;
   recensioneForGastronomiaId: string | null = null;
   selectedRecensioni: any[] = [];
+  nuovaRecensione = {
+    valutazione: '',
+    commento: ''
+  };
 
 
   constructor(private jsonService: JsonService) { }
@@ -125,7 +129,28 @@ loadRecensioniForGastronomia(gastronomiaId: string): void {
   });
 }
 
+onSubmitRecensioneForm(gastronomiaId: string): void {
+  if (this.nuovaRecensione.valutazione && this.nuovaRecensione.commento) {
+    this.jsonService.creaRecensione(this.nuovaRecensione, gastronomiaId)
+      .subscribe(response => {
+        console.log('Recensione creata con successo!', response);
+        // Aggiungi la nuova recensione all'array delle recensioni selezionate
+        this.selectedRecensioni.push(response);
+        this.nuovaRecensione = {
+          valutazione: '',
+          commento: ''
+        };
+      }, error => {
+        console.error('Errore nella creazione della recensione:', error);
+      });
+  } else {
+    console.warn('Compila tutti i campi del form della recensione!');
+  }
 }
 
 
 
+
+
+
+}

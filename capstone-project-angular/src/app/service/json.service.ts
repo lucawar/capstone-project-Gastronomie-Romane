@@ -34,4 +34,7 @@ export class JsonService {
     return this.http.get(`${this.baseURL}/gastronomia/${gastronomiaId}/recensioni`);
 }
 
+creaRecensione(payload: any, gastronomiaId: string): Observable<any> {
+  return this.http.post(`${this.baseURL}/users/gastronomia/${gastronomiaId}/recensioni`, payload);
+}
 }
