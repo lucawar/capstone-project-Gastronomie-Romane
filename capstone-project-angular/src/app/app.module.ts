@@ -15,6 +15,7 @@ import { TokenInterceptor } from './auth/token.interceptor';
 import { GastronomiaComponent } from './components/gastronomia/gastronomia.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { RecensioneComponent } from './components/recensione/recensione.component';
+import { PrenotazioneComponent } from './components/prenotazione/prenotazione.component';
 
 const routes: Route[] = [
   {
@@ -54,7 +55,8 @@ const routes: Route[] = [
     HomeComponent,
     GastronomiaComponent,
     MenuComponent,
-    RecensioneComponent
+    RecensioneComponent,
+    PrenotazioneComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(routes) , FormsModule, HttpClientModule, NgxPaginationModule

@@ -61,6 +61,11 @@
         <button type="submit">Invia recensione</button>
       </form>
     </div>
+        <!-- button per visualizzare il form di prenotazione -->
+        <button (click)="togglePrenotazioneForm(gastronomia.id)">
+          {{ selectedGastronomiaId === gastronomia.id ? 'Nascondi Prenotazione' : 'Prenota' }}
+      </button>
+      <app-prenotazione *ngIf="selectedGastronomiaId === gastronomia.id" [gastronomiaId]="gastronomia.id"></app-prenotazione>
             </div>
         </div>
     </div>

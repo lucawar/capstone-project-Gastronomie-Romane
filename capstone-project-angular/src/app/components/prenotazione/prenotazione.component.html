@@ -1,0 +1,18 @@
+<form (ngSubmit)="onSubmitPrenotazioneForm()">
+  <label>
+    Data:
+    <input [(ngModel)]="prenotazione.dataPrenotazione" type="date" name="dataPrenotazione">
+</label>
+  <br>
+  <label>
+    Ora:
+    <input [(ngModel)]="prenotazione.oraPrenotazione" type="time" name="oraPrenotazione">
+</label>
+  <br>
+  <label>
+    Note:
+    <textarea [(ngModel)]="prenotazione.nota" name="note"></textarea>
+  </label>
+  <br>
+  <button type="submit">Prenota</button>
+</form>
