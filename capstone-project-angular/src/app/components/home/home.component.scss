@@ -1,44 +1,61 @@
 .homepage-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f2f2f2;
-  font-family: 'Cinzel', serif; /* aggiunto il font qui */
-  background-image: url('https://www.ilgiornaledelcibo.it/wp-content/uploads/2016/09/aroma-palazzo-manfredi-roma.jpg');
-  background-size: cover;  /* Questa proprietà fa in modo che l'immagine copra l'intera area del contenitore */
-  background-repeat: no-repeat;  /* Questa proprietà impedisce la ripetizione dell'immagine */
-  background-position: center center;  /* Questa proprietà centra l'immagine sia verticalmente che orizzontalmente */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; // distanza tra i blocchi
+    padding: 3rem 5%; // un piccolo padding laterale per respirare
+    background-color: #f2f2f2;
+    font-family: 'Cinzel', serif;
 
-  .content-box {
-      background: rgba(255, 255, 255, 0.8);  /* Questo rende leggermente trasparente il box bianco per far risaltare meglio il testo sullo sfondo */
-      padding: 40px 60px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      text-align: center;
+    .content-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
 
-      h1 {
-          font-size: 2.5rem;
-          margin-bottom: 1rem;
-      }
+        &.intro-row {
+            flex-direction: row-reverse; // inverte l'ordine di immagine e testo per la sezione di introduzione
+        }
 
-      h2 {
-          font-size: 1.5rem;
+        .content-image, .content-grid {
+            flex: 1;
+            max-width: 50%; // metà dello spazio disponibile
 
-          .action-link {
+            img {
+                max-width: 100%;
+                border-radius: 10px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s;
 
-            color: #cd7f32;
-
-            &:hover {
-
-                color: #ffd700;
-                text-decoration: underline;
+                &:hover {
+                    transform: scale(1.05);
+                }
             }
-            &:active {
+        }
 
-              color: #d10000;
-          }
-          }
-      }
-  }
+        .content-text {
+            flex: 1;
+            max-width: 50%; // metà dello spazio disponibile
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .grid-row {
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+    }
 }

@@ -4,13 +4,13 @@
   </div>
 
 
-  <select [(ngModel)]="selezionaTipo" (change)="getGastronomieByTipo()">
+  <select class="custom-select" [(ngModel)]="selezionaTipo" (change)="getGastronomieByTipo()">
     <option value="">Tutte le gastronomie</option>
     <option *ngFor="let tipoGastronomie of tipo">{{ tipoGastronomie }}</option>
   </select>
 
 
-  <select [(ngModel)]="selezionaPriceRange" (change)="getGastronomiaByPriceRange()">
+  <select class="custom-select" [(ngModel)]="selezionaPriceRange" (change)="getGastronomiaByPriceRange()">
     <option value="">Tutti i prezzi</option>
     <option value="0-50">0 - 50</option>
     <option value="50-100">50 - 100</option>

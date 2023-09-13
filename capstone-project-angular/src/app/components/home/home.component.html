@@ -1,9 +1,26 @@
 <div class="container-fluid homepage-container">
-  <div class="content-box">
-      <h1>Benvenuto</h1>
-      <h2>
-          <a [routerLink]="['/login']" class="action-link">Accedi</a> O
-          <a [routerLink]="['/register']" class="action-link">Registrati</a>
-      </h2>
+  <!-- Blocco Introduzione: Immagine a sinistra, Testo a destra -->
+  <div class="content-row intro-row">
+      <div class="content-image">
+          <img src="https://www.foodblog.it/wp-content/uploads/2015/12/Pranzo-vista-Colosseo-Roma-10-indirizzi-1.jpg" alt="Gastronomia Romana">
+      </div>
+      <div class="content-text">
+          <h2>Benvenuti nella Gastronomia Romana</h2>
+          <p>Scopri le delizie della cucina romana, dai piatti tradizionali alle nuove interpretazioni moderne.</p>
+      </div>
+  </div>
+
+  <!-- Blocco Griglia: Griglia di Immagini a sinistra, Testo a destra -->
+  <div class="content-row grid-row">
+      <div class="content-grid">
+          <img src="https://www.caligolapalermo.it/wp-content/uploads/2019/07/carciofi-alla-giudia.jpg" alt="Piatti tipici romani 1">
+          <img src="https://www.informacibo.it/wp-content/uploads/2018/04/carbonara.jpg" alt="Piatti tipici romani 2">
+          <img src="https://hips.hearstapps.com/hmg-prod/images/gettyimages-465150864-1575624950.jpg" alt="Piatti tipici romani 3">
+          <!-- ... altre immagini ... -->
+      </div>
+      <div class="content-text">
+          <h2>Esplora i Piatti Romani</h2>
+          <p>Dai primi piatti ai secondi, dai dolci ai vini, la gastronomia romana offre una varietà ineguagliabile di sapori e tradizioni.</p>
+      </div>
   </div>
 </div>
