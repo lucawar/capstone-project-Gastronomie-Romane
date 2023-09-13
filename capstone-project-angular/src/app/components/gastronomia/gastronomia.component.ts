@@ -21,6 +21,8 @@ export class GastronomiaComponent implements OnInit {
   isLoading: boolean = false;
   recensioneForGastronomiaId: string | null = null;
   selectedRecensioni: any[] = [];
+  public prenotazioneGastronomiaId: string | null = null;
+
   nuovaRecensione = {
     valutazione: '',
     commento: ''
@@ -130,6 +132,7 @@ loadRecensioniForGastronomia(gastronomiaId: string): void {
   });
 }
 
+
 onSubmitRecensioneForm(gastronomiaId: string): void {
   if (this.nuovaRecensione.valutazione && this.nuovaRecensione.commento) {
     this.jsonService.creaRecensione(this.nuovaRecensione, gastronomiaId)
@@ -150,10 +153,10 @@ onSubmitRecensioneForm(gastronomiaId: string): void {
 }
 
 togglePrenotazioneForm(gastronomiaId: string) {
-  if (this.selectedGastronomiaId === gastronomiaId) {
-      this.selectedGastronomiaId = '';
+  if (this.prenotazioneGastronomiaId === gastronomiaId) {
+      this.prenotazioneGastronomiaId = '';
   } else {
-      this.selectedGastronomiaId = gastronomiaId;
+      this.prenotazioneGastronomiaId = gastronomiaId;
   }
 }
 }

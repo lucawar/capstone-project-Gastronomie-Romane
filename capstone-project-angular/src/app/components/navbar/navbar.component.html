@@ -16,24 +16,25 @@
                   <li>
                       <a class="nav-link link-danger text-white" [routerLink]="['gastronomia']" routerLinkActive="active">Gastronomie</a>
                   </li>
+
               </ul>
           </div>
       </div>
 
       <div class="navbar-right">
-          <ul class="navbar-nav">
-              <li *ngIf="!isLoggedIn()">
-                  <a class="nav-link link-danger text-white" [routerLink]="['login']" routerLinkActive="active">Login</a>
-              </li>
-              <li *ngIf="!isLoggedIn()">
-                  <a class="nav-link link-danger text-white" [routerLink]="['register']" routerLinkActive="active">Registrati</a>
-              </li>
-              <li *ngIf="isLoggedIn()" class="d-flex align-items-center">
-                  <h6 class="welcomeMessage text-black">Benvenuto {{user?.name }}</h6>
-                  <button type="button" class="btn custom-logout-button" (click)="logout()">Log out</button>
-              </li>
-          </ul>
-      </div>
-  </div>
+        <ul class="navbar-nav">
+            <li *ngIf="!isLoggedIn()">
+                <a class="nav-link link-danger text-white" [routerLink]="['login']" routerLinkActive="active">Login</a>
+            </li>
+            <li *ngIf="!isLoggedIn()">
+                <a class="nav-link link-danger text-white" [routerLink]="['register']" routerLinkActive="active">Registrati</a>
+            </li>
+            <li *ngIf="isLoggedIn()" class="d-flex align-items-center">
+                <h6 class="welcomeMessage text-black">Benvenuto {{user?.name }} </h6>
+                <a class="nav-link link-danger text-white profile-link" [routerLink]="['profilo']" routerLinkActive="active">Profilo</a>
+                <button type="button" class="btn custom-logout-button" (click)="logout()">Log out</button>
+            </li>
+        </ul>
+    </div>
+</div>
 </nav>
-

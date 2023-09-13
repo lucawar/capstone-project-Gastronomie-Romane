@@ -38,35 +38,34 @@
                   <!-- Visualizza il menu della gastronomia una volta spinto il button -->
                   <app-menu *ngIf="gastronomia.id === selectedGastronomiaId && selectedMenu" [menuItems]="selectedMenu.piatti"></app-menu>
 
-  <!-- button per visualizzare le recensioni della gastronomia -->
-  <button (click)="loadRecensioniForGastronomia(gastronomia.id)">Visualizza Recensioni</button>
+                  <!-- button per visualizzare le recensioni della gastronomia -->
+                  <button (click)="loadRecensioniForGastronomia(gastronomia.id)">Visualizza Recensioni</button>
 
-  <!-- Visualizza le recensioni della gastronomia una volta spinto il button -->
-  <app-recensione *ngIf="gastronomia.id === recensioneForGastronomiaId" [recensioni]="selectedRecensioni"></app-recensione>
+                  <!-- Visualizza le recensioni della gastronomia una volta spinto il button -->
+                  <app-recensione *ngIf="gastronomia.id === recensioneForGastronomiaId" [recensioni]="selectedRecensioni"></app-recensione>
 
-    <!-- Modulo per inserire una recensione -->
-    <div *ngIf="gastronomia.id === recensioneForGastronomiaId">
-      <h5>Lascia una recensione:</h5>
-      <form (ngSubmit)="onSubmitRecensioneForm(gastronomia.id)">
-        <label>
-          Valutazione:
-          <input [(ngModel)]="nuovaRecensione.valutazione" name="valutazione">
-        </label>
-        <br>
-        <label>
-          Commento:
-          <textarea [(ngModel)]="nuovaRecensione.commento" name="commento"></textarea>
-        </label>
-        <br>
-        <button type="submit">Invia recensione</button>
-      </form>
-    </div>
-        <!-- button per visualizzare il form di prenotazione -->
-        <button (click)="togglePrenotazioneForm(gastronomia.id)">
-          {{ selectedGastronomiaId === gastronomia.id ? 'Nascondi Prenotazione' : 'Prenota' }}
-      </button>
-      <app-prenotazione *ngIf="selectedGastronomiaId === gastronomia.id" [gastronomiaId]="gastronomia.id"></app-prenotazione>
-            </div>
+
+                  <!-- Modulo per inserire una recensione -->
+                  <div *ngIf="gastronomia.id === recensioneForGastronomiaId">
+                   <h5>Lascia una recensione:</h5>
+                  <form (ngSubmit)="onSubmitRecensioneForm(gastronomia.id)">
+                   <label>
+                       Valutazione:
+                     <input [(ngModel)]="nuovaRecensione.valutazione" name="valutazione">
+                   </label>
+                       <br>
+                    <label>
+                       Commento:
+                    <textarea [(ngModel)]="nuovaRecensione.commento" name="commento"></textarea>
+                    </label>
+                       <br>
+                    <button type="submit">Invia recensione</button>
+                  </form>
+             </div>
+                 <!-- button per visualizzare il form di prenotazione -->
+                 <button (click)="togglePrenotazioneForm(gastronomia.id)">Prenota</button>
+                <app-prenotazione *ngIf="prenotazioneGastronomiaId === gastronomia.id" [gastronomiaId]="gastronomia.id"></app-prenotazione>
+             </div>
         </div>
     </div>
   </div>
@@ -77,3 +76,4 @@
     <button class="btn-custom" (click)="nextPage()">Successivo</button>
   </div>
   </div>
+

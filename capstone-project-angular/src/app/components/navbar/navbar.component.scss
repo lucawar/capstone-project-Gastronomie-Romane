@@ -18,10 +18,22 @@
   align-items: center;
 }
 
+.navbar-nav li:not(:last-child) {
+  margin-right: 20px;
+}
+
 a:hover {
   cursor: pointer;
 }
 
 .welcomeMessage {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  margin-top: 5px;
   margin-right: 20px;
+  color: black;
+}
+
+.profile-link {
+  margin: 0 20px;
 }

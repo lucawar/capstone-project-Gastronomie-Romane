@@ -16,6 +16,7 @@ import { GastronomiaComponent } from './components/gastronomia/gastronomia.compo
 import { MenuComponent } from './components/menu/menu.component';
 import { RecensioneComponent } from './components/recensione/recensione.component';
 import { PrenotazioneComponent } from './components/prenotazione/prenotazione.component';
+import { ProfiloUserComponent } from './components/profilo-user/profilo-user.component';
 
 const routes: Route[] = [
   {
@@ -44,6 +45,10 @@ const routes: Route[] = [
   {
     path: 'gastronomia',
     component: GastronomiaComponent
+  },
+  {
+    path: 'profilo',
+    component: ProfiloUserComponent
   }
 ]
 @NgModule({
@@ -56,7 +61,8 @@ const routes: Route[] = [
     GastronomiaComponent,
     MenuComponent,
     RecensioneComponent,
-    PrenotazioneComponent
+    PrenotazioneComponent,
+    ProfiloUserComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(routes) , FormsModule, HttpClientModule, NgxPaginationModule
