@@ -42,4 +42,12 @@ creaPrenotazione(payload: any, gastronomiaId: string): Observable<any> {
   return this.http.post(`${this.baseURL}/users/gastronomia/${gastronomiaId}/prenotazioni`, payload);
 }
 
+aggiungiAiPreferiti(gastronomiaId: string): Observable<any> {
+  return this.http.post(`${this.baseURL}/users/aggiungiPreferiti/${gastronomiaId}`,{});
+}
+
+rimuoviDaiPreferiti(gastronomiaId: string): Observable<any> {
+  return this.http.delete(`${this.baseURL}/users/rimuoviPreferiti/${gastronomiaId}`);
+}
+
 }
