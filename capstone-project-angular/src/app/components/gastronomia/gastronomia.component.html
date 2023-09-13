@@ -49,10 +49,12 @@
                   <div *ngIf="gastronomia.id === recensioneForGastronomiaId">
                    <h5>Lascia una recensione:</h5>
                   <form (ngSubmit)="onSubmitRecensioneForm(gastronomia.id)">
-                   <label>
-                       Valutazione:
-                     <input [(ngModel)]="nuovaRecensione.valutazione" name="valutazione">
-                   </label>
+                    <label>
+                      Valutazione:
+                      <span *ngFor="let star of stars; let i = index" (click)="selectStar(i)">
+                          <i class="bi" [ngClass]="star ? 'bi-star-fill' : 'bi-star'"></i>
+                      </span>
+                  </label>
                        <br>
                     <label>
                        Commento:

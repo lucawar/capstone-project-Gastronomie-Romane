@@ -28,6 +28,7 @@ export class GastronomiaComponent implements OnInit {
     commento: ''
   };
   showPrenotazioneForm: boolean = false;
+  stars: boolean[] = Array(5).fill(false);
 
 
   constructor(private jsonService: JsonService) { }
@@ -158,5 +159,12 @@ togglePrenotazioneForm(gastronomiaId: string) {
   } else {
       this.prenotazioneGastronomiaId = gastronomiaId;
   }
+}
+
+selectStar(index: number): void {
+  for (let i = 0; i < 5; i++) {
+    this.stars[i] = i <= index;
+  }
+  this.nuovaRecensione.valutazione = (index + 1).toString();
 }
 }

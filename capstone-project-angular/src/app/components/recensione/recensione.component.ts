@@ -14,5 +14,12 @@ export class RecensioneComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getRatingStars(valutazione: number): boolean[] {
+    let stars: boolean[] = Array(5).fill(false);
+    for (let i = 0; i < 5; i++) {
+      stars[i] = i < valutazione;
+    }
+    return stars;
+  }
 }
 

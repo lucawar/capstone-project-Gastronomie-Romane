@@ -1,9 +1,14 @@
 <ul *ngIf="recensioni.length">
   <li *ngFor="let recensione of recensioni">
-   <strong>Valutazione:</strong> {{ recensione.valutazione }}<br>
+   <strong>Valutazione:</strong>
+   <span *ngFor="let star of getRatingStars(recensione.valutazione)">
+     <i *ngIf="star" class="bi bi-star-fill"></i>
+     <i *ngIf="!star" class="bi bi-star"></i>
+   </span><br>
    <strong>Commento:</strong> {{ recensione.commento }}<br>
    <strong>Data:</strong> {{ recensione.data }}<br>
    <br>
    <strong>Utente:</strong> {{ recensione.user?.name }}
+   <br>
   </li>
 </ul>

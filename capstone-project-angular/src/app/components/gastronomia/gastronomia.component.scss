@@ -61,6 +61,26 @@
   cursor: not-allowed;
 }
 
+.bi-star:hover,
+.bi-star:hover ~ .bi-star,
+.bi-star-fill:hover,
+.bi-star-fill:hover ~ .bi-star,
+
+.bi-star-fill:hover ~ .bi-star-fill {
+    color: #b08d57 !important;
+    cursor: pointer;
+}
+
+
+.bi-star-fill {
+    color: #b08d57;
+}
+
+
+.bi-star {
+    color: black;
+    cursor: pointer;
+}
 
 
 
