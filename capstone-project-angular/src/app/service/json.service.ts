@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Gastronomia } from '../models/gastronomia';
+import { User } from '../models/user';
 
 
 @Injectable({
@@ -27,7 +28,7 @@ export class JsonService {
   }
 
   getMenuByGastronomia(gastronomiaId: string): Observable<any> {
-    return this.http.get(`${this.baseURL}/gastronomia/${gastronomiaId}/menu`);
+    return this.http.get<any>(`${this.baseURL}/gastronomia/${gastronomiaId}/menu`);
   }
 
   getRecensioniByGastronomia(gastronomiaId: string): Observable<any> {
@@ -42,12 +43,14 @@ creaPrenotazione(payload: any, gastronomiaId: string): Observable<any> {
   return this.http.post(`${this.baseURL}/users/gastronomia/${gastronomiaId}/prenotazioni`, payload);
 }
 
-aggiungiAiPreferiti(gastronomiaId: string): Observable<any> {
-  return this.http.post(`${this.baseURL}/users/aggiungiPreferiti/${gastronomiaId}`,{});
+ // AGGIUNGI GASTRONOMIA AI PREFERITI
+ aggiungiPreferitiGastronomia(gastronomiaId: string): Observable<any> {
+  return this.http.post(`${this.baseURL}/aggiungiPreferiti/${gastronomiaId}`, {});
 }
 
-rimuoviDaiPreferiti(gastronomiaId: string): Observable<any> {
-  return this.http.delete(`${this.baseURL}/users/rimuoviPreferiti/${gastronomiaId}`);
+// RIMUOVI GASTRONOMIA DAI PREFERITI
+rimuoviPreferitiGastronomia(gastronomiaId: string): Observable<any> {
+  return this.http.delete(`${this.baseURL}/rimuoviPreferiti/${gastronomiaId}`);
 }
 
 }

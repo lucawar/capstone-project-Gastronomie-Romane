@@ -7,6 +7,7 @@ export interface Gastronomia {
   indirizzo: string;
   telefono: string;
   prezzoMedio: number;
+  descrizione: string;
   tipoGastronomia: TipoGastronomia;
   imageUrl: string;
 }

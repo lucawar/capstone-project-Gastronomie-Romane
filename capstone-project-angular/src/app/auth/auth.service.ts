@@ -33,6 +33,8 @@ export class AuthService {
       const newUser = { username, name, surname, email, password, numeroTelefono};
     return this.http.post<any>('http://localhost:3001/auth/register', newUser);
   }
+
+
   logout() {
     localStorage.removeItem('token');
     alert("CIAO,RIEFFETTUA IL LOGIN PER ACCEDERE")

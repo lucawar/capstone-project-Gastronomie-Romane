@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JsonService } from 'src/app/service/json.service';
 import { Gastronomia } from 'src/app/models/gastronomia';
+import { User } from 'src/app/models/user';
 
 
 
@@ -22,6 +23,7 @@ export class GastronomiaComponent implements OnInit {
   recensioneForGastronomiaId: string | null = null;
   selectedRecensioni: any[] = [];
   public prenotazioneGastronomiaId: string | null = null;
+
 
   nuovaRecensione = {
     valutazione: '',
@@ -118,6 +120,7 @@ loadMenuForGastronomia(gastronomiaId: string): void {
   });
 }
 
+
 loadRecensioniForGastronomia(gastronomiaId: string): void {
   if (this.recensioneForGastronomiaId === gastronomiaId) {
     this.recensioneForGastronomiaId = null;
@@ -167,4 +170,7 @@ selectStar(index: number): void {
   }
   this.nuovaRecensione.valutazione = (index + 1).toString();
 }
+
+
 }
+
