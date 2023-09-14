@@ -23,6 +23,7 @@ export class GastronomiaComponent implements OnInit {
   recensioneForGastronomiaId: string | null = null;
   selectedRecensioni: any[] = [];
   public prenotazioneGastronomiaId: string | null = null;
+  public selectedGastronomiaForPrenotazione: any;
 
 
   nuovaRecensione = {

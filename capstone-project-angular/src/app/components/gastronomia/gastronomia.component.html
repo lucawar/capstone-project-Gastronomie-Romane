@@ -58,7 +58,7 @@
               type="button"
               class="btn btn-primary"
               data-bs-toggle="modal"
-              data-bs-target="#menuModal"
+              [attr.data-bs-target]="'#menuModal' + gastronomia.id"
               (click)="loadMenuForGastronomia(gastronomia.id)"
             >
               Visualizza Menu
@@ -68,7 +68,7 @@
             <div
               *ngIf="selectedMenu"
               class="modal fade"
-              id="menuModal"
+              [attr.id]="'menuModal' + gastronomia.id"
               tabindex="-1"
               aria-labelledby="menuModalLabel"
               aria-hidden="true"
