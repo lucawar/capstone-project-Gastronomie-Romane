@@ -10,10 +10,5 @@ export class User {
   "role": string;
   "prenotazioni": any[];
   "gastronomie_preferite": any[];
-  "recensioni": (string | Review)[];
-  "enabled": boolean;
-  "accountNonLocked": boolean;
- "authorities": { authority: string }[];
-  "credentialsNonExpired": boolean;
-  "accountNonExpired": boolean;
+  "recensioni":Review[];
 }

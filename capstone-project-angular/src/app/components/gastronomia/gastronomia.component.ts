@@ -39,39 +39,23 @@ export class GastronomiaComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadGastronomia();
-}
-nextPage() {
-  this.page++;
-  this.loadGastronomia();
-}
-
-previousPage() {
-  if (this.page > 0) {
-    this.page--;
+  }
+  nextPage() {
+    this.page++;
     this.loadGastronomia();
   }
-}
 
-loadGastronomia(): void {
-  this.isLoading = true;
-  this.jsonService.getGastronomie(this.page, 10).subscribe(data => {
-    console.log(data);
-    if (Array.isArray(data.content)) {
-      this.gastronomie = data.content;
-    } else {
-      console.error('Formato dati inaspettato:', data);
+  previousPage() {
+    if (this.page > 0) {
+      this.page--;
+      this.loadGastronomia();
     }
-    this.isLoading = false;
-  }, error => {
-    console.error('Errore nella chiamata al servizio:', error);
-    this.isLoading = false;
-  });
-}
+  }
 
-getGastronomieByTipo(): void {
-  this.isLoading = true;
-  if (this.selezionaTipo) {
-    this.jsonService.getGastronomieByTipo(this.selezionaTipo).subscribe(data => {
+  loadGastronomia(): void {
+    this.isLoading = true;
+    this.jsonService.getGastronomie(this.page, 10).subscribe(data => {
+      console.log(data);
       if (Array.isArray(data.content)) {
         this.gastronomie = data.content;
       } else {
@@ -82,130 +66,147 @@ getGastronomieByTipo(): void {
       console.error('Errore nella chiamata al servizio:', error);
       this.isLoading = false;
     });
-  } else {
-    this.loadGastronomia();
   }
-}
 
-getGastronomiaByPriceRange(): void {
-  this.isLoading = true;
-  if (this.selezionaPriceRange) {
-    const [minPrice, maxPrice] = this.selezionaPriceRange.split('-');
-    this.jsonService.getGastronomieByPrezzo(minPrice, maxPrice).subscribe(data => {
-      if (Array.isArray(data.content)) {
-        this.gastronomie = data.content;
-      } else {
-        console.error('Formato dati inaspettato:', data);
-      }
-      this.isLoading = false;
-    }, error => {
-      console.error('Errore nella chiamata al servizio:', error);
-      this.isLoading = false;
-    });
-  } else {
-    this.loadGastronomia();
-  }
-}
-
-loadMenuForGastronomia(gastronomiaId: string): void {
-  if (this.selectedGastronomiaId === gastronomiaId && this.selectedMenu) {
-    this.selectedMenu = null;
-    this.selectedGastronomiaId = null;
-    return;
-  }
-  this.selectedGastronomiaId = gastronomiaId;
-  this.jsonService.getMenuByGastronomia(gastronomiaId).subscribe(data => {
-    console.log('Menu ricevuto:', data);
-    this.selectedMenu = data;
-  }, error => {
-    console.error('Errore nella chiamata al servizio:', error);
-  });
-}
-
-
-loadRecensioniForGastronomia(gastronomiaId: string): void {
-  if (this.recensioneForGastronomiaId === gastronomiaId) {
-    this.recensioneForGastronomiaId = null;
-    this.selectedRecensioni = [];
-    return;
-  }
-  this.recensioneForGastronomiaId = gastronomiaId;
-  this.jsonService.getRecensioniByGastronomia(gastronomiaId).subscribe(data => {
-    console.log('Recensioni ricevute:', data);
-    this.selectedRecensioni = data;
-  }, error => {
-    console.error('Errore nella chiamata al servizio:', error);
-  });
-}
-
-
-onSubmitRecensioneForm(gastronomiaId: string): void {
-  if (this.nuovaRecensione.valutazione && this.nuovaRecensione.commento) {
-    this.jsonService.creaRecensione(this.nuovaRecensione, gastronomiaId)
-      .subscribe(response => {
-        console.log('Recensione creata con successo!', response);
-        alert('Recensione inserita con successo!');
-        this.selectedRecensioni.push(response);
-        this.nuovaRecensione = {
-          valutazione: '',
-          commento: ''
-        };
+  getGastronomieByTipo(): void {
+    this.isLoading = true;
+    if (this.selezionaTipo) {
+      this.jsonService.getGastronomieByTipo(this.selezionaTipo).subscribe(data => {
+        if (Array.isArray(data.content)) {
+          this.gastronomie = data.content;
+        } else {
+          console.error('Formato dati inaspettato:', data);
+        }
+        this.isLoading = false;
       }, error => {
-        console.error('Errore nella creazione della recensione:', error);
+        console.error('Errore nella chiamata al servizio:', error);
+        this.isLoading = false;
       });
-  } else {
-    console.warn('Compila tutti i campi del form della recensione!');
+    } else {
+      this.loadGastronomia();
+    }
   }
-}
 
-togglePrenotazioneForm(gastronomiaId: string) {
-  if (this.prenotazioneGastronomiaId === gastronomiaId) {
+  getGastronomiaByPriceRange(): void {
+    this.isLoading = true;
+    if (this.selezionaPriceRange) {
+      const [minPrice, maxPrice] = this.selezionaPriceRange.split('-');
+      this.jsonService.getGastronomieByPrezzo(minPrice, maxPrice).subscribe(data => {
+        if (Array.isArray(data.content)) {
+          this.gastronomie = data.content;
+        } else {
+          console.error('Formato dati inaspettato:', data);
+        }
+        this.isLoading = false;
+      }, error => {
+        console.error('Errore nella chiamata al servizio:', error);
+        this.isLoading = false;
+      });
+    } else {
+      this.loadGastronomia();
+    }
+  }
+
+  loadMenuForGastronomia(gastronomiaId: string): void {
+    if (this.selectedGastronomiaId === gastronomiaId && this.selectedMenu) {
+      this.selectedMenu = null;
+      this.selectedGastronomiaId = null;
+      return;
+    }
+    this.selectedGastronomiaId = gastronomiaId;
+    this.jsonService.getMenuByGastronomia(gastronomiaId).subscribe(data => {
+      console.log('Menu ricevuto:', data);
+      this.selectedMenu = data;
+    }, error => {
+      console.error('Errore nella chiamata al servizio:', error);
+    });
+  }
+
+
+  loadRecensioniForGastronomia(gastronomiaId: string): void {
+    if (this.recensioneForGastronomiaId === gastronomiaId) {
+      this.recensioneForGastronomiaId = null;
+      this.selectedRecensioni = [];
+      return;
+    }
+    this.recensioneForGastronomiaId = gastronomiaId;
+    this.jsonService.getRecensioniByGastronomia(gastronomiaId).subscribe(data => {
+      console.log('Recensioni ricevute:', data);
+      this.selectedRecensioni = data;
+    }, error => {
+      console.error('Errore nella chiamata al servizio:', error);
+    });
+  }
+
+
+  onSubmitRecensioneForm(gastronomiaId: string): void {
+    if (this.nuovaRecensione.valutazione && this.nuovaRecensione.commento) {
+      this.jsonService.creaRecensione(this.nuovaRecensione, gastronomiaId)
+        .subscribe(response => {
+          console.log('Recensione creata con successo!', response);
+          alert('Recensione inserita con successo!');
+          this.selectedRecensioni.push(response);
+          this.nuovaRecensione = {
+            valutazione: '',
+            commento: ''
+          };
+        }, error => {
+          console.error('Errore nella creazione della recensione:', error);
+        });
+    } else {
+      console.warn('Compila tutti i campi del form della recensione!');
+    }
+  }
+
+  togglePrenotazioneForm(gastronomiaId: string) {
+    if (this.prenotazioneGastronomiaId === gastronomiaId) {
       this.prenotazioneGastronomiaId = '';
-  } else {
+    } else {
       this.prenotazioneGastronomiaId = gastronomiaId;
-  }
-}
-
-selectStar(index: number): void {
-  for (let i = 0; i < 5; i++) {
-    this.stars[i] = i <= index;
-  }
-  this.nuovaRecensione.valutazione = (index + 1).toString();
-}
-
-isFavorited(gastronomiaId: string): boolean {
-  return this.favoritedGastronomies.includes(gastronomiaId);
-}
-
-aggiungiAiPreferiti(gastronomiaId: string): void {
-  console.log(`Tentativo di aggiungere gastronomia con ID ${gastronomiaId} ai preferiti...`);
-  this.jsonService.aggiungiPreferitiGastronomia(gastronomiaId).subscribe(
-    response => {
-      console.log('Gastronomia aggiunta con successo ai preferiti!', response);
-      alert('Gastronomia aggiunta ai preferiti!');
-      this.favoritedGastronomies.push(gastronomiaId);
-    },
-    error => {
-      console.error(`Errore durante l'aggiunta della gastronomia con ID ${gastronomiaId} ai preferiti:`, error);
-      alert('Errore nell\'aggiungere la gastronomia ai preferiti.');
     }
-  );
-}
+  }
 
-rimuoviDaiPreferiti(gastronomiaId: string): void {
-  console.log(`Tentativo di rimuovere gastronomia con ID ${gastronomiaId} dai preferiti...`);
-  this.jsonService.rimuoviPreferitiGastronomia(gastronomiaId).subscribe(
-    response => {
-      console.log('Gastronomia rimossa con successo dai preferiti!', response);
-      alert('Gastronomia rimossa dai preferiti!');
-      this.favoritedGastronomies = this.favoritedGastronomies.filter(id => id !== gastronomiaId);
-    },
-    error => {
-      console.error(`Errore durante la rimozione della gastronomia con ID ${gastronomiaId} dai preferiti:`, error);
-      alert('Errore nel rimuovere la gastronomia dai preferiti.');
+  selectStar(index: number): void {
+    for (let i = 0; i < 5; i++) {
+      this.stars[i] = i <= index;
     }
-  );
-}
+    this.nuovaRecensione.valutazione = (index + 1).toString();
+  }
+
+  isFavorited(gastronomiaId: string): boolean {
+    return this.favoritedGastronomies.includes(gastronomiaId);
+  }
+
+  aggiungiAiPreferiti(gastronomiaId: string): void {
+    console.log(`Tentativo di aggiungere gastronomia con ID ${gastronomiaId} ai preferiti...`);
+    this.jsonService.aggiungiPreferitiGastronomia(gastronomiaId).subscribe(
+      response => {
+        console.log('Gastronomia aggiunta con successo ai preferiti!', response);
+        alert('Gastronomia aggiunta ai preferiti!');
+        this.favoritedGastronomies.push(gastronomiaId);
+      },
+      error => {
+        console.error(`Errore durante l'aggiunta della gastronomia con ID ${gastronomiaId} ai preferiti:`, error);
+        alert('Errore nell\'aggiungere la gastronomia ai preferiti.');
+      }
+    );
+  }
+
+  rimuoviDaiPreferiti(gastronomiaId: string): void {
+    console.log(`Tentativo di rimuovere gastronomia con ID ${gastronomiaId} dai preferiti...`);
+    this.jsonService.rimuoviPreferitiGastronomia(gastronomiaId).subscribe(
+      response => {
+        console.log('Gastronomia rimossa con successo dai preferiti!', response);
+        alert('Gastronomia rimossa dai preferiti!');
+        this.favoritedGastronomies = this.favoritedGastronomies.filter(id => id !== gastronomiaId);
+      },
+      error => {
+        console.error(`Errore durante la rimozione della gastronomia con ID ${gastronomiaId} dai preferiti:`, error);
+        alert('Errore nel rimuovere la gastronomia dai preferiti.');
+      }
+    );
+  }
+
 
 }
 

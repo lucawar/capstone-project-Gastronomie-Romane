@@ -1,1 +1,58 @@
-<p>profilo-user works!</p>
+<div class="container-fluid">
+<div *ngIf="currentUser;">
+  <h1>Benvenuto, {{ currentUser.name }}</h1>
+  <p>Email: {{ currentUser.email }}</p>
+  <p>Username: {{ currentUser.username }}</p>
+
+  <div class="button-group">
+    <button (click)="showGastronomie = !showGastronomie">Mostra Gastronomie Preferite</button>
+    <button (click)="showRecensioni = !showRecensioni">Mostra Recensioni Utente</button>
+    <button (click)="showPrenotazioni = !showPrenotazioni">Mostra Prenotazioni Utente</button>
+  </div>
+
+  <!-- GASTRONOMIE PREFERITE -->
+  <div *ngIf="showGastronomie" class="section">
+    <h2>Gastronomie Preferite</h2>
+    <div class="gastronomia-card" *ngFor="let gastronomia of currentUser.gastronomie_preferite">
+      <img [src]="gastronomia.imageUrl" alt="{{ gastronomia.nome }}" width="200">
+      <h3>{{ gastronomia.nome }}</h3>
+      <p><strong>Indirizzo:</strong> {{ gastronomia.indirizzo }}</p>
+      <p><strong>Telefono:</strong> {{ gastronomia.telefono }}</p>
+      <p><strong>Prezzo Medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}</p>
+      <p><strong>Descrizione:</strong> {{ gastronomia.descrizione }}</p>
+      <p><strong>Tipo Gastronomia:</strong> {{ gastronomia.tipoGastronomia }}</p>
+      <button (click)="onDeleteGastronomiaPreferita(gastronomia.id)">Elimina dai preferiti</button>
+    </div>
+    </div>
+  </div>
+
+  <!-- RECENSIONI UTENTE -->
+  <div *ngIf="showRecensioni" class="section">
+    <h2>Recensioni dell'utente:</h2>
+    <ul>
+      <li *ngFor="let recensione of currentUser.recensioni">
+        <div>
+          <strong>Data:</strong> {{ recensione.data }}
+        </div>
+        <div>
+          <strong>Valutazione:</strong> {{ recensione.valutazione }}
+        </div>
+        <div>
+          <strong>Commento:</strong> {{ recensione.commento }}
+        </div>
+        <hr>
+      </li>
+    </ul>
+  </div>
+
+  <!-- PRENOTAZIONI UTENTE -->
+  <div *ngIf="showPrenotazioni" class="section">
+    <h2>Prenotazioni Utente</h2>
+    <div *ngFor="let prenotazione of currentUser.prenotazioni">
+      <p><strong>Data Prenotazione:</strong> {{ prenotazione.dataPrenotazione }}</p>
+      <p><strong>Ora Prenotazione:</strong> {{ prenotazione.oraPrenotazione }}</p>
+      <p><strong>Nota:</strong> {{ prenotazione.nota }}</p>
+      <hr>
+    </div>
+  </div>
+</div>
