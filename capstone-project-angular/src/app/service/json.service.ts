@@ -43,14 +43,14 @@ creaPrenotazione(payload: any, gastronomiaId: string): Observable<any> {
   return this.http.post(`${this.baseURL}/users/gastronomia/${gastronomiaId}/prenotazioni`, payload);
 }
 
- // AGGIUNGI GASTRONOMIA AI PREFERITI
+
  aggiungiPreferitiGastronomia(gastronomiaId: string): Observable<any> {
-  return this.http.post(`${this.baseURL}/aggiungiPreferiti/${gastronomiaId}`, {});
+  return this.http.post(`${this.baseURL}/users/aggiungiPreferiti/${gastronomiaId}`,null, {responseType: 'text' as 'json'});
 }
 
-// RIMUOVI GASTRONOMIA DAI PREFERITI
+
 rimuoviPreferitiGastronomia(gastronomiaId: string): Observable<any> {
-  return this.http.delete(`${this.baseURL}/rimuoviPreferiti/${gastronomiaId}`);
+  return this.http.delete(`${this.baseURL}/users/rimuoviPreferiti/${gastronomiaId}`, {responseType: 'text' as 'json'} );
 }
 
 }

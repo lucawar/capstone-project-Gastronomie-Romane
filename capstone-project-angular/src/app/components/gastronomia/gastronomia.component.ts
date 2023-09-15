@@ -24,6 +24,7 @@ export class GastronomiaComponent implements OnInit {
   selectedRecensioni: any[] = [];
   public prenotazioneGastronomiaId: string | null = null;
   public selectedGastronomiaForPrenotazione: any;
+  favoritedGastronomies: string[] = [];
 
 
   nuovaRecensione = {
@@ -172,6 +173,39 @@ selectStar(index: number): void {
   this.nuovaRecensione.valutazione = (index + 1).toString();
 }
 
+isFavorited(gastronomiaId: string): boolean {
+  return this.favoritedGastronomies.includes(gastronomiaId);
+}
+
+aggiungiAiPreferiti(gastronomiaId: string): void {
+  console.log(`Tentativo di aggiungere gastronomia con ID ${gastronomiaId} ai preferiti...`);
+  this.jsonService.aggiungiPreferitiGastronomia(gastronomiaId).subscribe(
+    response => {
+      console.log('Gastronomia aggiunta con successo ai preferiti!', response);
+      alert('Gastronomia aggiunta ai preferiti!');
+      this.favoritedGastronomies.push(gastronomiaId);
+    },
+    error => {
+      console.error(`Errore durante l'aggiunta della gastronomia con ID ${gastronomiaId} ai preferiti:`, error);
+      alert('Errore nell\'aggiungere la gastronomia ai preferiti.');
+    }
+  );
+}
+
+rimuoviDaiPreferiti(gastronomiaId: string): void {
+  console.log(`Tentativo di rimuovere gastronomia con ID ${gastronomiaId} dai preferiti...`);
+  this.jsonService.rimuoviPreferitiGastronomia(gastronomiaId).subscribe(
+    response => {
+      console.log('Gastronomia rimossa con successo dai preferiti!', response);
+      alert('Gastronomia rimossa dai preferiti!');
+      this.favoritedGastronomies = this.favoritedGastronomies.filter(id => id !== gastronomiaId);
+    },
+    error => {
+      console.error(`Errore durante la rimozione della gastronomia con ID ${gastronomiaId} dai preferiti:`, error);
+      alert('Errore nel rimuovere la gastronomia dai preferiti.');
+    }
+  );
+}
 
 }
 

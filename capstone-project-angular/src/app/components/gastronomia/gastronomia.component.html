@@ -44,6 +44,15 @@
             class="card-img-top"
           />
           <div class="card-body">
+            <i *ngIf="!isFavorited(gastronomia.id)"
+   class="bi bi-star"
+   (click)="aggiungiAiPreferiti(gastronomia.id)"
+   title="Aggiungi ai preferiti"></i>
+
+<i *ngIf="isFavorited(gastronomia.id)"
+   class="bi bi-star-fill"
+   (click)="rimuoviDaiPreferiti(gastronomia.id)"
+   title="Rimuovi dai preferiti"></i>
             <h5 class="card-title">{{ gastronomia.nome }}</h5>
             <p class="card-text">
               Indirizzo: {{ gastronomia.indirizzo }}<br />
