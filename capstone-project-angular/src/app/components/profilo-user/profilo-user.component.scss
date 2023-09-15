@@ -1,0 +1,40 @@
+body {
+  background-color: #f4f4f4;
+}
+
+.primary-color {
+  color: #007BFF; /* colore primario di Bootstrap */
+}
+
+.card {
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-img-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.btn-danger {
+  border-radius: 10px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #d52a1a; /* Una tonalità più scura del rosso */
+  border-color: #d52a1a;
+}
+
+.card-title {
+  color: #007BFF; /* colore primario di Bootstrap */
+  margin-bottom: 10px;
+}

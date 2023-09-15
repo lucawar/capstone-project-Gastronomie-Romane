@@ -11,20 +11,25 @@
   </div>
 
   <!-- GASTRONOMIE PREFERITE -->
-  <div *ngIf="showGastronomie" class="section">
-    <h2>Gastronomie Preferite</h2>
-    <div class="gastronomia-card" *ngFor="let gastronomia of currentUser.gastronomie_preferite">
-      <img [src]="gastronomia.imageUrl" alt="{{ gastronomia.nome }}" width="200">
-      <h3>{{ gastronomia.nome }}</h3>
-      <p><strong>Indirizzo:</strong> {{ gastronomia.indirizzo }}</p>
-      <p><strong>Telefono:</strong> {{ gastronomia.telefono }}</p>
-      <p><strong>Prezzo Medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}</p>
-      <p><strong>Descrizione:</strong> {{ gastronomia.descrizione }}</p>
-      <p><strong>Tipo Gastronomia:</strong> {{ gastronomia.tipoGastronomia }}</p>
-      <button (click)="onDeleteGastronomiaPreferita(gastronomia.id)">Elimina dai preferiti</button>
-    </div>
+<div *ngIf="showGastronomie" class="section mt-4">
+  <h2>Gastronomie Preferite</h2>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let gastronomia of currentUser.gastronomie_preferite">
+      <div class="card mb-4">
+        <img [src]="gastronomia.imageUrl" alt="{{ gastronomia.nome }}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{ gastronomia.nome }}</h5>
+          <p class="card-text"><strong>Indirizzo:</strong> {{ gastronomia.indirizzo }}</p>
+          <p class="card-text"><strong>Telefono:</strong> {{ gastronomia.telefono }}</p>
+          <p class="card-text"><strong>Prezzo Medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}</p>
+          <p class="card-text"><strong>Descrizione:</strong> {{ gastronomia.descrizione }}</p>
+          <p class="card-text"><strong>Tipo Gastronomia:</strong> {{ gastronomia.tipoGastronomia }}</p>
+          <button (click)="onDeleteGastronomiaPreferita(gastronomia.id)" class="btn btn-danger">Elimina dai preferiti</button>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 
   <!-- RECENSIONI UTENTE -->
   <div *ngIf="showRecensioni" class="section">

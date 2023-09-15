@@ -24,7 +24,7 @@ export class ProfiloUserComponent implements OnInit {
   ngOnInit(): void {
     this.jsonService.getCurrentUser().subscribe(
       user => {
-        console.log('Dati utente ricevuti:', user);  // Log per visualizzare l'utente
+        console.log('Dati utente ricevuti:', user);
         this.currentUser = user;
 
 
@@ -73,11 +73,9 @@ export class ProfiloUserComponent implements OnInit {
   onDeleteGastronomiaPreferita(gastronomiaId: string) {
     this.jsonService.rimuoviPreferitiGastronomia(gastronomiaId).subscribe(
       response => {
-        // Qui puoi gestire la risposta positiva, ad esempio aggiornare la lista delle gastronomie preferite
         this.currentUser.gastronomie_preferite = this.currentUser.gastronomie_preferite.filter(g => g.id !== gastronomiaId);
       },
       error => {
-        // Qui puoi gestire eventuali errori, ad esempio mostrare un messaggio all'utente
         console.error("Si è verificato un errore durante l'eliminazione:", error);
       }
     );
