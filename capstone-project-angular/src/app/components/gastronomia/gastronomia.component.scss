@@ -16,9 +16,15 @@
   margin: 0;
 }
 
+
+.card-title {
+  color: #b22222;
+  margin-bottom: 10px;
+}
+
 .card button {
-  padding: 8px 15px;
-  border-radius: 20px;
+  padding: 5px 15px;
+  border-radius: 25px;
   background-color: #8B0000;
   color: #FFFFFF;
   border: none;
@@ -28,7 +34,7 @@
 
 .card button:hover {
   transform: translateY(-3px);
-  background-color: #b22222;
+  background-color: #b08d57;
 }
 
 .card button:active {
@@ -41,7 +47,7 @@
   margin-top: 20px;
 }
 
-.btn-custom {
+.btn-customPage {
   margin: 0 5px;
   padding: 8px 15px;
   border-radius: 20px;
@@ -52,11 +58,12 @@
   transition: background-color 0.3s ease;
 }
 
-.btn-custom:hover {
+
+.btn-customPage:hover {
   background-color:#b22222;
 }
 
-.btn-custom[disabled] {
+.btn-customPage[disabled] {
   background-color: #d1d1d1;
   cursor: not-allowed;
 }
@@ -81,6 +88,10 @@
     cursor: pointer;
 }
 
+.bi-star:hover, .bi-star-fill:hover {
+  transform: scale(1.9);
+}
+
 .custom-select {
   background-color: #f9f9f9;
   border-radius: 5px;
@@ -97,6 +108,7 @@
   margin-top: 1rem;
   margin-right: 1rem;
 }
+
 
 
 .spinner-container {

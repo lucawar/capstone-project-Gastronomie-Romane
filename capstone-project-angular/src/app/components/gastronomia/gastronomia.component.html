@@ -31,11 +31,11 @@
             </div>
             <h5 class="card-title">{{ gastronomia.nome }}</h5>
             <p class="card-text">
-              Indirizzo: {{ gastronomia.indirizzo }}<br />
-              Telefono: {{ gastronomia.telefono }}<br />
-              Descrizione: {{ gastronomia.descrizione }}<br />
-              Tipo: {{ gastronomia.tipoGastronomia }}<br />
-              Prezzo medio: {{ gastronomia.prezzoMedio }}
+              <strong>Indirizzo:</strong> {{ gastronomia.indirizzo }}<br />
+              <strong><i class="bi bi-telephone-fill"></i></strong> {{ gastronomia.telefono }}<br />
+              <strong>Descrizione:</strong> {{ gastronomia.descrizione }}<br />
+              <strong>Tipo:</strong> {{ gastronomia.tipoGastronomia }}<br />
+              <strong>Prezzo medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}
             </p>
 
             <!-- BUTTON MENU + APRE MODALE -->
@@ -74,6 +74,8 @@
               Visualizza Recensioni
             </button>
 
+
+
             <!-- VISUALIZZA RECENSIONI -->
             <app-recensione *ngIf="gastronomia.id === recensioneForGastronomiaId"
               [recensioni]="selectedRecensioni"></app-recensione>
@@ -110,9 +112,9 @@
       </div>
     </div>
     <div class="pagination-buttons">
-      <button class="btn-custom" [disabled]="page <= 0" (click)="previousPage()">
+      <button class="btn-customPage" [disabled]="page <= 0" (click)="previousPage()">
         Precedente
       </button>
-      <button class="btn-custom" (click)="nextPage()">Successivo</button>
+      <button class="btn-customPage" (click)="nextPage()">Successivo</button>
     </div>
   </div>

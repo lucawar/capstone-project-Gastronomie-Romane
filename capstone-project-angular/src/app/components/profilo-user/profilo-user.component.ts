@@ -17,6 +17,8 @@ export class ProfiloUserComponent implements OnInit {
   showGastronomie = false;
   showRecensioni = false;
   showPrenotazioni = false;
+  currentPage: number = 0;
+itemsPerPage: number = 5;
 
   constructor(private jsonService: JsonService ) { }
 
@@ -36,6 +38,19 @@ export class ProfiloUserComponent implements OnInit {
         console.error('Errore durante il recupero dell\'utente loggato:', error);
       }
     );
+  }
+
+  previousPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+    }
+  }
+
+  nextPage() {
+    const totalItems = this.currentUser.recensioni.length;
+    if ((this.currentPage + 1) * this.itemsPerPage < totalItems) {
+      this.currentPage++;
+    }
   }
 
   loadGastronomiePreferite(): void {
