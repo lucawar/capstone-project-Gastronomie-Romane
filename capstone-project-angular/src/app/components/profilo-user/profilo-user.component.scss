@@ -1,42 +1,28 @@
 body {
-  background-color: #f4f4f4;
+  background-color: #fefefe;
+  font-family: 'Cinzel', serif;
 }
 
 .primary-color {
-  color: #b22222;
+  color: #8B0000;
 }
 
 .card {
   border-radius: 15px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
-}
-
-.card-img-top {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  height: 200px;
-  object-fit: cover;
+  background-color: #fdfdfe;
 }
 
 .btn-danger {
-  border-radius: 10px;
-  transition: background-color 0.3s, border-color 0.3s;
-}
-
-.btn-danger:hover {
-  background-color: #d52a1a;
-  border-color: #d52a1a;
+  background-color: #8B0000;
 }
 
 .card-title {
-  color: #b22222;
-  margin-bottom: 10px;
+  color: red;
 }
 
 

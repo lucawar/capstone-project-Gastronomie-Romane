@@ -19,11 +19,13 @@ export class ProfiloUserComponent implements OnInit {
   showPrenotazioni = false;
   currentPage: number = 0;
 itemsPerPage: number = 5;
+nomeGastronomia!: string;
 
   constructor(private jsonService: JsonService ) { }
 
 
   ngOnInit(): void {
+
     this.jsonService.getCurrentUser().subscribe(
       user => {
         console.log('Dati utente ricevuti:', user);
@@ -39,6 +41,7 @@ itemsPerPage: number = 5;
       }
     );
   }
+
 
   previousPage() {
     if (this.currentPage > 0) {
@@ -78,12 +81,25 @@ itemsPerPage: number = 5;
 
   loadPrenotazioniUtente(): void {
     this.jsonService.getPrenotazioniUtente().subscribe(response => {
-      console.log('Prenotazioni utente:', response);
       this.currentUser.prenotazioni = response.content;
+
+      // Popoliamo i nomi delle gastronomie per ogni prenotazione.
+      this.currentUser.prenotazioni.forEach(prenotazione => {
+        this.jsonService.findByGastronomiaId(prenotazione.gastronomia).subscribe(
+          dettagliGastronomia => {
+            prenotazione.gastronomia = dettagliGastronomia.nome;
+          },
+          error => {
+            console.error("Errore nel caricare i dettagli della gastronomia:", error);
+          }
+        );
+      });
+
     }, error => {
       console.error("Errore nel caricare le prenotazioni dell'utente:", error);
     });
   }
+
 
   onDeleteGastronomiaPreferita(gastronomiaId: string) {
     this.jsonService.rimuoviPreferitiGastronomia(gastronomiaId).subscribe(

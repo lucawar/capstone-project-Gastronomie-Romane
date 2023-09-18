@@ -31,6 +31,7 @@ export class GastronomiaComponent implements OnInit {
     valutazione: '',
     commento: ''
   };
+
   showPrenotazioneForm: boolean = false;
   stars: boolean[] = Array(5).fill(false);
 
@@ -165,6 +166,7 @@ export class GastronomiaComponent implements OnInit {
       this.prenotazioneGastronomiaId = gastronomiaId;
     }
   }
+
 
   selectStar(index: number): void {
     for (let i = 0; i < 5; i++) {

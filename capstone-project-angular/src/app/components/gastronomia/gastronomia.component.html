@@ -15,7 +15,7 @@
     <option value="100-150">100 - 150</option>
     <option value="200-250">200 - 250</option>
   </select>
-
+</div>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4 mt-5" *ngFor="let gastronomia of gastronomie">
@@ -99,6 +99,8 @@
                 <button type="submit">Invia recensione</button>
               </form>
             </div>
+
+
             <!-- BUTTON MOSTRA FORM PRENOTAZIONE -->
             <button (click)="togglePrenotazioneForm(gastronomia.id)" class="btn">
               Prenota</button>

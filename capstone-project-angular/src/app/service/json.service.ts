@@ -66,4 +66,9 @@ export class JsonService {
     return this.http.get<any>(`${this.baseURL}/users/myPrenotazioni?page=${page}&size=${size}&sortBy=${sortBy}`);
   }
 
+  findByGastronomiaId(gastronomiaId: string): Observable<Gastronomia> {
+    return this.http.get<Gastronomia>(`${this.baseURL}/gastronomia/${gastronomiaId}`);
+  }
+
 }
+
