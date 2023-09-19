@@ -1,23 +1,24 @@
-<div class="container-fluid">
-<div *ngIf="currentUser;">
-  <h1>Benvenuto, <strong>{{ currentUser.name }}</strong></h1>
-  <p><i class="bi bi-envelope-open-fill"></i> Email: <strong>{{ currentUser.email }}</strong></p>
-  <p>Username: <strong>{{ currentUser.username }}</strong></p>
-  <p><i class="bi bi-telephone-fill"></i> Numero telefono: <strong>{{ currentUser.numeroTelefono }}</strong></p>
+<div class="container-fluid my-5 sfondo">
+  <div *ngIf="currentUser" class="profile-section">
+      <h1>Benvenuto, <strong class="text-danger">{{ currentUser.name }}</strong></h1>
+      <div class="user-info mt-4">
+          <p><i class="bi bi-envelope-open-fill"></i> Email: <strong>{{ currentUser.email }}</strong></p>
+          <p>Username: <strong>{{ currentUser.username }}</strong></p>
+          <p><i class="bi bi-telephone-fill"></i> Numero telefono: <strong>{{ currentUser.numeroTelefono }}</strong></p>
+      </div>
 
-
-  <div class="button-group">
-    <button (click)="showGastronomie = !showGastronomie">Mostra Gastronomie Preferite</button>
-    <button (click)="showRecensioni = !showRecensioni">Mostra Recensioni Utente</button>
-    <button (click)="showPrenotazioni = !showPrenotazioni">Mostra Prenotazioni Utente</button>
-  </div>
+      <div class="button-group mt-4">
+          <button (click)="showGastronomie = !showGastronomie" class="btn btn-danger">Gastronomie Preferite</button>
+          <button (click)="showRecensioni = !showRecensioni" class="btn btn-danger">Recensioni Utente</button>
+          <button (click)="showPrenotazioni = !showPrenotazioni" class="btn btn-danger">Prenotazioni Utente</button>
+      </div>
 
   <!-- GASTRONOMIE PREFERITE -->
 <div *ngIf="showGastronomie" class="section mt-4">
   <h2>Gastronomie Preferite</h2>
   <div class="row">
     <div class="col-md-4" *ngFor="let gastronomia of currentUser.gastronomie_preferite">
-      <div class="card mb-4">
+      <div class="card mb-4 h-100">
         <img [src]="gastronomia.imageUrl" alt="{{ gastronomia.nome }}" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">{{ gastronomia.nome }}</h5>
@@ -26,7 +27,7 @@
           <p class="card-text"><strong>Prezzo Medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}</p>
           <p class="card-text"><strong>Descrizione:</strong> {{ gastronomia.descrizione }}</p>
           <p class="card-text"><strong>Tipo Gastronomia:</strong> {{ gastronomia.tipoGastronomia }}</p>
-          <button (click)="onDeleteGastronomiaPreferita(gastronomia.id)" class="btn btn-danger">Elimina dai preferiti</button>
+          <button (click)="onDeleteGastronomiaPreferita(gastronomia.id)" class="btn btn-danger">Rimuovi</button>
         </div>
       </div>
     </div>

@@ -19,6 +19,7 @@ export class PrenotazioneComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   onSubmitPrenotazioneForm(): void {
     if (this.prenotazione.dataPrenotazione && this.prenotazione.oraPrenotazione && this.prenotazione.nota) {
       this.jsonService.creaPrenotazione(this.prenotazione, this.gastronomiaId)

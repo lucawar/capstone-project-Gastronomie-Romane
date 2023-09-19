@@ -1,5 +1,6 @@
-body {
-  background-color: #fefefe;
+
+
+.sfondo{
   font-family: 'Cinzel', serif;
 }
 
@@ -8,21 +9,61 @@ body {
 }
 
 .card {
-  border-radius: 15px;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
+  border: 1px solid #B22222;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .card:hover {
-  background-color: #fdfdfe;
+  transform: translateY(-5px);
 }
 
 .btn-danger {
+  display: block;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 25px;
   background-color: #8B0000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover{
+  background-color: #b08d57;
 }
 
 .card-title {
-  color: red;
+  color: #b22222;
+  padding: 10px;
+}
+
+.profile-section {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-info i {
+  margin-right: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
 }
 
 

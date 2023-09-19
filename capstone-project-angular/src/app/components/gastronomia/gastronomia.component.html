@@ -19,8 +19,8 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4 mt-5" *ngFor="let gastronomia of gastronomie">
-        <div class="card mb-4">
-          <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" class="card-img-top" />
+        <div class="card mb-4 h-100">
+          <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" class="card-img-top"/>
           <div class="card-body">
             <div class="d-flex justify-content-end">
               <i *ngIf="!isFavorited(gastronomia.id)" class="bi bi-star starPreferiti"
