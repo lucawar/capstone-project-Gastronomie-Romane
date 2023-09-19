@@ -12,6 +12,7 @@ export class User {
     gastronomia: string;
     dataPrenotazione: string;
     id: string;
+    numeroPersone: number;
     nota: string;
     oraPrenotazione: string;
   }[];

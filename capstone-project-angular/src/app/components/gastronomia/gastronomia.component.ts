@@ -35,6 +35,9 @@ export class GastronomiaComponent implements OnInit {
   showPrenotazioneForm: boolean = false;
   stars: boolean[] = Array(5).fill(false);
 
+  showRecensioneForm: boolean = false;
+  recensioneFormGastronomiaId!: number
+
 
   constructor(private jsonService: JsonService) { }
 
@@ -137,6 +140,10 @@ export class GastronomiaComponent implements OnInit {
     }, error => {
       console.error('Errore nella chiamata al servizio:', error);
     });
+  }
+
+  toggleRecensioneForm() {
+    this.showRecensioneForm = !this.showRecensioneForm;
   }
 
 

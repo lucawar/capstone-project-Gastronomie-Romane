@@ -1,19 +1,30 @@
-<form (ngSubmit)="onSubmitPrenotazioneForm()">
+<div class="card mt-4">
+  <div class="card-header custom-color text-black">
+      Modulo Prenotazione
+  </div>
+  <div class="card-body">
+      <form (ngSubmit)="onSubmitPrenotazioneForm()">
+          <div class="mb-3">
+              <label for="dataPrenotazione" class="form-label">Data:</label>
+              <input [(ngModel)]="prenotazione.dataPrenotazione" type="date" name="dataPrenotazione" class="form-control" id="dataPrenotazione">
+          </div>
 
-  <label>
-    Data:
-    <input [(ngModel)]="prenotazione.dataPrenotazione" type="date" name="dataPrenotazione">
-</label>
-  <br>
-  <label>
-    Ora:
-    <input [(ngModel)]="prenotazione.oraPrenotazione" type="time" name="oraPrenotazione">
-</label>
-  <br>
-  <label>
-    Note:
-    <textarea [(ngModel)]="prenotazione.nota" name="note"></textarea>
-  </label>
-  <br>
-  <button type="submit">Prenota</button>
-</form>
+          <div class="mb-3">
+              <label for="oraPrenotazione" class="form-label">Ora:</label>
+              <input [(ngModel)]="prenotazione.oraPrenotazione" type="time" name="oraPrenotazione" class="form-control" id="oraPrenotazione">
+          </div>
+
+          <div class="mb-3">
+              <label for="numeroPersone" class="form-label">Numero di persone:</label>
+              <input [(ngModel)]="prenotazione.numeroPersone" type="number" name="numeroPersone" min="1" class="form-control" id="numeroPersone">
+          </div>
+
+          <div class="mb-3">
+              <label for="note" class="form-label">Note:</label>
+              <textarea [(ngModel)]="prenotazione.nota" name="note" class="form-control" id="note" rows="3"></textarea>
+          </div>
+
+          <button type="submit" class="btn custom-color">Prenota</button>
+      </form>
+  </div>
+</div>

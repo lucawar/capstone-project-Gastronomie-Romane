@@ -16,107 +16,116 @@
     <option value="200-250">200 - 250</option>
   </select>
 </div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4 mt-5" *ngFor="let gastronomia of gastronomie">
-        <div class="card mb-4 h-100">
-          <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" class="card-img-top"/>
-          <div class="card-body">
-            <div class="d-flex justify-content-end">
-              <i *ngIf="!isFavorited(gastronomia.id)" class="bi bi-star starPreferiti"
-                (click)="aggiungiAiPreferiti(gastronomia.id)" title="Aggiungi ai preferiti"></i>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 mt-5" *ngFor="let gastronomia of gastronomie">
+      <div class="card mb-4 h-100">
+        <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" class="card-img-top" />
+        <div class="card-body">
+          <div class="d-flex justify-content-end">
+            <i *ngIf="!isFavorited(gastronomia.id)" class="bi bi-star starPreferiti"
+              (click)="aggiungiAiPreferiti(gastronomia.id)" title="Aggiungi ai preferiti"></i>
 
-              <i *ngIf="isFavorited(gastronomia.id)" class="bi bi-star-fill starPreferiti"
-                (click)="rimuoviDaiPreferiti(gastronomia.id)" title="Rimuovi dai preferiti"></i>
-            </div>
-            <h5 class="card-title">{{ gastronomia.nome }}</h5>
-            <p class="card-text">
-              <strong>Indirizzo:</strong> {{ gastronomia.indirizzo }}<br />
-              <strong><i class="bi bi-telephone-fill"></i></strong> {{ gastronomia.telefono }}<br />
-              <strong>Descrizione:</strong> {{ gastronomia.descrizione }}<br />
-              <strong>Tipo:</strong> {{ gastronomia.tipoGastronomia }}<br />
-              <strong>Prezzo medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}
-            </p>
+            <i *ngIf="isFavorited(gastronomia.id)" class="bi bi-star-fill starPreferiti"
+              (click)="rimuoviDaiPreferiti(gastronomia.id)" title="Rimuovi dai preferiti"></i>
+          </div>
+          <h5 class="card-title">{{ gastronomia.nome }}</h5>
+          <p class="card-text">
+            <strong>Indirizzo:</strong> {{ gastronomia.indirizzo }}<br />
+            <strong><i class="bi bi-telephone-fill"></i></strong> {{ gastronomia.telefono }}<br />
+            <strong>Descrizione:</strong> {{ gastronomia.descrizione }}<br />
+            <strong>Tipo:</strong> {{ gastronomia.tipoGastronomia }}<br />
+            <strong>Prezzo medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}
+          </p>
 
-            <!-- BUTTON MENU + APRE MODALE -->
-            <button type="button" class="btn" data-bs-toggle="modal"
-              [attr.data-bs-target]="'#menuModal' + gastronomia.id" (click)="loadMenuForGastronomia(gastronomia.id)">
-              Visualizza Menu
-            </button>
+          <!-- BUTTON MENU + APRE MODALE -->
+          <button type="button" class="btn" data-bs-toggle="modal" [attr.data-bs-target]="'#menuModal' + gastronomia.id"
+            (click)="loadMenuForGastronomia(gastronomia.id)">
+            Visualizza Menu
+          </button>
 
-            <!-- MODALE -->
-            <div *ngIf="selectedMenu" class="modal fade" [attr.id]="'menuModal' + gastronomia.id" tabindex="-1"
-              aria-labelledby="menuModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="menuModalLabel">
-                      {{ gastronomia.nome }}
-                    </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
+          <!-- MODALE -->
+          <div *ngIf="selectedMenu" class="modal fade" [attr.id]="'menuModal' + gastronomia.id" tabindex="-1"
+            aria-labelledby="menuModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="menuModalLabel">
+                    {{ gastronomia.nome }}
+                  </h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
-                    <!-- VISUALIZZA MENU -->
-                    <app-menu [menuItems]="selectedMenu.piatti"></app-menu>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn" data-bs-dismiss="modal">
-                      Chiudi
-                    </button>
-                  </div>
+                  <!-- VISUALIZZA MENU -->
+                  <app-menu [menuItems]="selectedMenu.piatti"></app-menu>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn" data-bs-dismiss="modal">
+                    Chiudi
+                  </button>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- BUTTON RECENSIONI -->
-            <button type="button" class="btn mx-3" (click)="loadRecensioniForGastronomia(gastronomia.id)">
-              Visualizza Recensioni
-            </button>
+          <!-- BUTTON RECENSIONI -->
+          <button type="button" class="btn mx-3" (click)="loadRecensioniForGastronomia(gastronomia.id)">
+            Visualizza Recensioni
+          </button>
 
 
 
-            <!-- VISUALIZZA RECENSIONI -->
-            <app-recensione *ngIf="gastronomia.id === recensioneForGastronomiaId"
-              [recensioni]="selectedRecensioni"></app-recensione>
+          <!-- VISUALIZZA RECENSIONI -->
+          <app-recensione *ngIf="gastronomia.id === recensioneForGastronomiaId"
+            [recensioni]="selectedRecensioni"></app-recensione>
 
-            <!-- MODULO PER INSERIRE RECENSIONE -->
-            <div *ngIf="gastronomia.id === recensioneForGastronomiaId">
-              <h5>Lascia una recensione:</h5>
+          <!-- MODULO PER INSERIRE RECENSIONE -->
+          <div *ngIf="gastronomia.id === recensioneForGastronomiaId" class="card mt-4">
+            <div class="card-header custom-color text-white">
+              Lascia una recensione:
+            </div>
+            <div class="card-body">
               <form (ngSubmit)="onSubmitRecensioneForm(gastronomia.id)">
-                <label>
-                  Valutazione:
-                  <span *ngFor="let star of stars; let i = index" (click)="selectStar(i)">
-                    <i class="bi" [ngClass]="star ? 'bi-star-fill' : 'bi-star'"></i>
-                  </span>
-                </label>
-                <br />
-                <label>
-                  Commento:
-                  <textarea [(ngModel)]="nuovaRecensione.commento" name="commento"></textarea>
-                </label>
-                <br />
-                <button type="submit">Invia recensione</button>
+
+                <div class="mb-3">
+                  <label for="valutazione" class="form-label">Valutazione:</label>
+                  <div id="valutazione" class="mb-3">
+                    <span *ngFor="let star of stars; let i = index" (click)="selectStar(i)">
+                      <i class="bi" [ngClass]="star ? 'bi-star-fill' : 'bi-star'"></i>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="commento" class="form-label">Commento:</label>
+                  <textarea [(ngModel)]="nuovaRecensione.commento" name="commento" class="form-control" id="commento"
+                    rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn custom-color">Invia recensione</button>
+
               </form>
             </div>
+          </div>
 
 
-            <!-- BUTTON MOSTRA FORM PRENOTAZIONE -->
-            <button (click)="togglePrenotazioneForm(gastronomia.id)" class="btn">
-              Prenota</button>
+          <!-- BUTTON MOSTRA FORM PRENOTAZIONE -->
+          <button (click)="togglePrenotazioneForm(gastronomia.id)" class="btn">
+            Prenota</button>
 
-            <!-- MODULO PRENOTAZIONE -->
-            <div *ngIf="prenotazioneGastronomiaId === gastronomia.id">
-              <app-prenotazione [gastronomiaId]="gastronomia.id"></app-prenotazione>
-            </div>
+          <!-- MODULO PRENOTAZIONE -->
+          <div *ngIf="prenotazioneGastronomiaId === gastronomia.id">
+            <app-prenotazione [gastronomiaId]="gastronomia.id"></app-prenotazione>
           </div>
         </div>
       </div>
     </div>
-    <div class="pagination-buttons">
-      <button class="btn-customPage" [disabled]="page <= 0" (click)="previousPage()">
-        Precedente
-      </button>
-      <button class="btn-customPage" (click)="nextPage()">Successivo</button>
-    </div>
   </div>
+  <div class="pagination-buttons">
+    <button class="btn-customPage" [disabled]="page <= 0" (click)="previousPage()">
+      Precedente
+    </button>
+    <button class="btn-customPage" (click)="nextPage()">Successivo</button>
+  </div>
+</div>

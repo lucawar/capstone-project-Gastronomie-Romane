@@ -11,7 +11,8 @@ export class PrenotazioneComponent implements OnInit {
   prenotazione = {
     dataPrenotazione: '',
     oraPrenotazione: '',
-    nota: ''
+    nota: '',
+    numeroPersone: ''
   };
   @Input() gastronomiaId!: string;
   constructor(private jsonService: JsonService) { }
@@ -21,7 +22,7 @@ export class PrenotazioneComponent implements OnInit {
 
 
   onSubmitPrenotazioneForm(): void {
-    if (this.prenotazione.dataPrenotazione && this.prenotazione.oraPrenotazione && this.prenotazione.nota) {
+    if (this.prenotazione.dataPrenotazione && this.prenotazione.oraPrenotazione && this.prenotazione.nota && this.prenotazione.numeroPersone) {
       this.jsonService.creaPrenotazione(this.prenotazione, this.gastronomiaId)
         .subscribe(response => {
           console.log('Prenotazione effettuata con successo!', response);
@@ -29,7 +30,8 @@ export class PrenotazioneComponent implements OnInit {
           this.prenotazione = {
             dataPrenotazione: '',
             oraPrenotazione: '',
-            nota: ''
+            nota: '',
+            numeroPersone: ''
           };
         }, error => {
           console.error('Errore nella prenotazione:', error);

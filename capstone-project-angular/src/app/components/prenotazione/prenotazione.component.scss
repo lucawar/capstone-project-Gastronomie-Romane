@@ -1,0 +1,44 @@
+
+.custom-color {
+  background-color: #b08d57;
+  color: white;
+}
+
+
+.card {
+  border: 1px solid #b08d57;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header.custom-color {
+  font-weight: bold;
+}
+
+.card-body {
+  background-color: #f9f9f9;
+}
+
+
+.form-label {
+  color: #b22222;
+}
+
+.form-control {
+  border: 1px solid #b08d57;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #b22222;
+  box-shadow: 0 0 0 0.2rem rgba(178, 34, 34, 0.25);
+}
+
+
+.btn.custom-color {
+  border: none;
+}
+
+.btn.custom-color:hover {
+  background-color: #b22222;
+  color: white;
+}
