@@ -1,0 +1,75 @@
+<div class="container-fluid">
+<div *ngIf="gastronomia">
+  <div class="card">
+    <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" class="card-img-top" />
+    <div class="card-body">
+      <div class="d-flex justify-content-end">
+        <i *ngIf="!isFavorited(gastronomia.id)" class="bi bi-star starPreferiti"
+          (click)="aggiungiAiPreferiti(gastronomia.id)" title="Aggiungi ai preferiti"></i>
+
+        <i *ngIf="isFavorited(gastronomia.id)" class="bi bi-star-fill starPreferiti"
+          (click)="rimuoviDaiPreferiti(gastronomia.id)" title="Rimuovi dai preferiti"></i>
+      </div>
+      <h5 class="card-title">{{ gastronomia.nome }}</h5>
+      <p class="card-text">
+        <strong>Indirizzo:</strong> {{ gastronomia.indirizzo }}<br />
+        <strong><i class="bi bi-telephone-fill"></i></strong> {{ gastronomia.telefono }}<br />
+        <strong>Descrizione:</strong> {{ gastronomia.descrizione }}<br />
+        <strong>Tipo:</strong> {{ gastronomia.tipoGastronomia }}<br />
+        <strong>Prezzo medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}
+      </p>
+     <div class="button-group">
+        <!-- BUTTON RECENSIONI -->
+        <button type="button" class="btn mx-3" (click)="loadRecensioniForGastronomia(gastronomia.id)">
+          Visualizza Recensioni
+        </button>
+
+        <!-- MODULO PER INSERIRE RECENSIONE -->
+        <div *ngIf="gastronomia.id === recensioneForGastronomiaId" class="mt-4">
+          <div class="custom-color text-white">
+            Lascia una recensione:
+          </div>
+          <div>
+            <form (ngSubmit)="onSubmitRecensioneForm(gastronomia.id)">
+
+              <div class="mb-3">
+                <label for="valutazione" class="form-label">Valutazione:</label>
+                <div id="valutazione" class="mb-3">
+                  <span *ngFor="let star of stars; let i = index" (click)="selectStar(i)">
+                    <i class="bi" [ngClass]="star ? 'bi-star-fill' : 'bi-star'"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="commento" class="form-label">Commento:</label>
+                <textarea [(ngModel)]="nuovaRecensione.commento" name="commento" class="form-control" id="commento"
+                  rows="3"></textarea>
+              </div>
+
+              <button type="submit" class="btn custom-color">Invia recensione</button>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- VISUALIZZA RECENSIONI -->
+        <app-recensione *ngIf="gastronomia.id === recensioneForGastronomiaId"
+          [recensioni]="selectedRecensioni"></app-recensione>
+
+
+
+
+        <!-- BUTTON MOSTRA FORM PRENOTAZIONE -->
+        <button (click)="togglePrenotazioneForm(gastronomia.id)" class="btn">
+          Prenota</button>
+
+        <!-- MODULO PRENOTAZIONE -->
+        <div *ngIf="prenotazioneGastronomiaId === gastronomia.id">
+          <app-prenotazione [gastronomiaId]="gastronomia.id"></app-prenotazione>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

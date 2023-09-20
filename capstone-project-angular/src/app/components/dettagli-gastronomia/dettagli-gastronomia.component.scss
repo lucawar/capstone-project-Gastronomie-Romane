@@ -1,0 +1,64 @@
+.card {
+  background-color: white;
+  border: 1px solid #B22222;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 8px rgba(1, 1, 1, 1);
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+}
+
+
+
+.card img {
+  margin: 0;
+}
+
+
+.card-title {
+  color: #b22222;
+  margin-bottom: 10px;
+}
+
+.card button {
+  padding: 5px 15px;
+  border-radius: 25px;
+  background-color: #8B0000;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.card button:hover {
+  transform: translateY(-3px);
+  background-color: #b08d57;
+}
+
+.card button:active {
+  transform: translateY(1px);
+}
+
+.bi-star:hover,
+.bi-star:hover ~ .bi-star,
+.bi-star-fill:hover,
+.bi-star-fill:hover ~ .bi-star,
+
+.bi-star-fill:hover ~ .bi-star-fill {
+    color: #b08d57 !important;
+    cursor: pointer;
+}
+
+
+.bi-star-fill {
+    color: #b08d57;
+}
+
+.bi-star {
+    color: black;
+    cursor: pointer;
+}
+
+.bi-star:hover, .bi-star-fill:hover {
+  transform: scale(1.9);
+}

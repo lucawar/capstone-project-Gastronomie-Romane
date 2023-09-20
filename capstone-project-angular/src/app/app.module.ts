@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -17,6 +18,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { RecensioneComponent } from './components/recensione/recensione.component';
 import { PrenotazioneComponent } from './components/prenotazione/prenotazione.component';
 import { ProfiloUserComponent } from './components/profilo-user/profilo-user.component';
+import { DettagliGastronomiaComponent } from './components/dettagli-gastronomia/dettagli-gastronomia.component';
 
 const routes: Route[] = [
   {
@@ -49,6 +51,10 @@ const routes: Route[] = [
   {
     path: 'profilo',
     component: ProfiloUserComponent
+  },
+  {
+    path: 'gastronomia/:id',
+    component: DettagliGastronomiaComponent
   }
 ]
 @NgModule({
@@ -62,7 +68,8 @@ const routes: Route[] = [
     MenuComponent,
     RecensioneComponent,
     PrenotazioneComponent,
-    ProfiloUserComponent
+    ProfiloUserComponent,
+    DettagliGastronomiaComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(routes) , FormsModule, HttpClientModule, NgxPaginationModule
