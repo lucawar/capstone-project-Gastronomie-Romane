@@ -74,18 +74,12 @@
             Visualizza Recensioni
           </button>
 
-
-
-          <!-- VISUALIZZA RECENSIONI -->
-          <app-recensione *ngIf="gastronomia.id === recensioneForGastronomiaId"
-            [recensioni]="selectedRecensioni"></app-recensione>
-
           <!-- MODULO PER INSERIRE RECENSIONE -->
-          <div *ngIf="gastronomia.id === recensioneForGastronomiaId" class="card mt-4">
-            <div class="card-header custom-color text-white">
+          <div *ngIf="gastronomia.id === recensioneForGastronomiaId" class="mt-4">
+            <div class="custom-color text-white">
               Lascia una recensione:
             </div>
-            <div class="card-body">
+            <div>
               <form (ngSubmit)="onSubmitRecensioneForm(gastronomia.id)">
 
                 <div class="mb-3">
@@ -108,6 +102,12 @@
               </form>
             </div>
           </div>
+
+          <!-- VISUALIZZA RECENSIONI -->
+          <app-recensione *ngIf="gastronomia.id === recensioneForGastronomiaId"
+            [recensioni]="selectedRecensioni"></app-recensione>
+
+
 
 
           <!-- BUTTON MOSTRA FORM PRENOTAZIONE -->

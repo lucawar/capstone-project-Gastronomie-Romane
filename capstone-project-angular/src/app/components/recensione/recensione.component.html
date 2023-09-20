@@ -1,4 +1,4 @@
-<ul *ngIf="recensioni.length">
+<ul class="mt-5" *ngIf="recensioni.length">
   <li *ngFor="let recensione of recensioni">
    <strong>Valutazione:</strong>
    <span *ngFor="let star of getRatingStars(recensione.valutazione)">
@@ -8,7 +8,7 @@
    <strong>Commento:</strong> {{ recensione.commento }}<br>
    <strong>Data:</strong> {{ recensione.data }}<br>
    <br>
-   <strong>Utente:</strong> {{ recensione.user?.name }}
+   <strong></strong> {{ recensione.user?.name }}
    <br>
   </li>
 </ul>

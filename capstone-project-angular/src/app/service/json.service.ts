@@ -70,5 +70,13 @@ export class JsonService {
     return this.http.get<Gastronomia>(`${this.baseURL}/gastronomia/${gastronomiaId}`);
   }
 
+  deletePrenotazione(prenotazioneId: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseURL}/prenotazioni/${prenotazioneId}`);
+  }
+
+  updatePrenotazione(prenotazioneId: string, updatedData: any): Observable<any> {
+    return this.http.put<any>(`${this.baseURL}/prenotazioni/${prenotazioneId}`, updatedData);
+  }
+
 }
 

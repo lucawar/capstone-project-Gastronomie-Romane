@@ -20,6 +20,9 @@ export class ProfiloUserComponent implements OnInit {
   currentPage: number = 0;
 itemsPerPage: number = 5;
 nomeGastronomia!: string;
+isEditing: boolean = false;
+updatedData: any = {};
+editingPrenotazioneId: number | null = null;
 
   constructor(private jsonService: JsonService ) { }
 
@@ -111,4 +114,43 @@ nomeGastronomia!: string;
       }
     );
   }
+
+  onDeletePrenotazione(prenotazioneId: string): void {
+    this.jsonService.deletePrenotazione(prenotazioneId).subscribe(() => {
+      console.log('Prenotazione eliminata con successo!');
+      this.currentUser.prenotazioni = this.currentUser.prenotazioni.filter(p => p.id !== prenotazioneId);
+      alert('Prenotazione eliminata con successo!');
+
+    }, (error) => {
+      console.error('errore nella cancellazione della prenotazione utente', error);
+    });
+  }
+
+  onSubmitUpdate(prenotazioneId: string): void {
+    this.jsonService.updatePrenotazione(prenotazioneId, this.updatedData).subscribe(() => {
+      console.log('Prenotazione aggiornata con successo!');
+      const prenotazione = this.currentUser.prenotazioni.find(p => p.id === prenotazioneId);
+      if (prenotazione) {
+        prenotazione.dataPrenotazione = this.updatedData.dataPrenotazione;
+        prenotazione.oraPrenotazione = this.updatedData.oraPrenotazione;
+        prenotazione.numeroPersone = this.updatedData.numeroPersone;
+        prenotazione.nota = this.updatedData.nota;
+      }
+      this.updatedData = {};
+      this.isEditing = false;
+    }, (error) => {
+      console.error('Errore nell\'aggiornamento della prenotazione', error);
+    });
+  }
+
+  onEditPrenotazione(prenotazione: any): void {
+    this.updatedData = {
+      dataPrenotazione: prenotazione.dataPrenotazione,
+      oraPrenotazione: prenotazione.oraPrenotazione,
+      numeroPersone: prenotazione.numeroPersone,
+      nota: prenotazione.nota
+    };
+    this.isEditing = true;
+  }
+
 }

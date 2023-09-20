@@ -35,6 +35,28 @@
   transition: background-color 0.3s ease;
 }
 
+.btn-success{
+  display: block;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 25px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  display: block;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 25px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 .btn-danger:hover{
   background-color: #b08d57;
 }
@@ -58,12 +80,26 @@
 
 .button-group {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .section {
   border-top: 1px solid #ddd;
   padding-top: 20px;
+}
+
+.form-label {
+  color: #b22222;
+}
+
+.form-control {
+  border: 1px solid #b08d57;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #b22222;
+  box-shadow: 0 0 0 0.2rem rgba(178, 34, 34, 0.25);
 }
 
 
