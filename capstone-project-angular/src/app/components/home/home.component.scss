@@ -1,8 +1,8 @@
 .homepage-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem; // distanza tra i blocchi
-    padding: 3rem 5%; // un piccolo padding laterale per respirare
+    gap: 2rem;
+    padding: 3rem 5%;
     background-color: #f2f2f2;
     font-family: 'Cinzel', serif;
 
@@ -13,12 +13,12 @@
         gap: 2rem;
 
         &.intro-row {
-            flex-direction: row-reverse; // inverte l'ordine di immagine e testo per la sezione di introduzione
+            flex-direction: row-reverse;
         }
 
         .content-image, .content-grid {
             flex: 1;
-            max-width: 50%; // metà dello spazio disponibile
+            max-width: 50%;
 
             img {
                 max-width: 100%;
@@ -34,7 +34,7 @@
 
         .content-text {
             flex: 1;
-            max-width: 50%; // metà dello spazio disponibile
+            max-width: 50%;
             padding: 2rem;
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
@@ -59,5 +59,43 @@
         }
     }
 
+    .carosello-img {
+      height: 300px;
+      object-fit: cover;
+  }
+
+  .footer {
+    background-color: #343a40;
+}
+
+.footer a.text-white {
+    text-decoration: none;
+}
+
+.footer a.text-white:hover {
+    text-decoration: underline;
+}
+
+.footer-col {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation-name: fadeInUp;
+  animation-duration: 3s;
+  animation-timing-function: ease-out;
+}
 
 }

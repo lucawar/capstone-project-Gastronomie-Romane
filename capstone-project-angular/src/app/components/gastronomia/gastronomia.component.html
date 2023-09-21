@@ -1,4 +1,4 @@
-<div class="container-fluid">
+ <div class="container-fluid sfondo">
   <div *ngIf="isLoading" class="spinner-container">
     <div class="spinner"></div>
   </div>
@@ -19,47 +19,43 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4 mt-5" *ngFor="let gastronomia of gastronomie">
-      <div class="card mb-4 h-100">
-        <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" class="card-img-top" />
-        <div class="card-body">
-          <div class="d-flex justify-content-end">
-            <i *ngIf="!isFavorited(gastronomia.id)" class="bi bi-star starPreferiti"
-              (click)="aggiungiAiPreferiti(gastronomia.id)" title="Aggiungi ai preferiti"></i>
-
-            <i *ngIf="isFavorited(gastronomia.id)" class="bi bi-star-fill starPreferiti"
-              (click)="rimuoviDaiPreferiti(gastronomia.id)" title="Rimuovi dai preferiti"></i>
-          </div>
-          <h5 class="card-title"><strong>{{ gastronomia.nome }}</strong></h5>
-
-           <div class="button-group d-flex justify-content-evenly">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3 class="locale-name">{{ gastronomia.nome }}</h3>
+          <i *ngIf="!isFavorited(gastronomia.id)" class="bi bi-star starPreferiti"
+            (click)="aggiungiAiPreferiti(gastronomia.id)" title="Aggiungi ai preferiti"></i>
+          <i *ngIf="isFavorited(gastronomia.id)" class="bi bi-star-fill starPreferiti"
+            (click)="rimuoviDaiPreferiti(gastronomia.id)" title="Rimuovi dai preferiti"></i>
+        </div>
+        <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" />
+        <div class="button-group d-flex justify-content-evenly hover-content">
           <button class="btn" [routerLink]="['/gastronomia', gastronomia.id]">Dettagli</button>
           <!-- BUTTON MENU + APRE MODALE -->
           <button type="button" class="btn" data-bs-toggle="modal" [attr.data-bs-target]="'#menuModal' + gastronomia.id"
             (click)="loadMenuForGastronomia(gastronomia.id)">
             Visualizza Menu
           </button>
-          </div>
-          <!-- MODALE -->
-          <div *ngIf="selectedMenu" class="modal fade" [attr.id]="'menuModal' + gastronomia.id" tabindex="-1"
-            aria-labelledby="menuModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="menuModalLabel">
-                    {{ gastronomia.nome }}
-                  </h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+        </div>
+        <!-- MODALE -->
+        <div *ngIf="selectedMenu" class="modal fade light-modal" [attr.id]="'menuModal' + gastronomia.id" tabindex="-1"
+          aria-labelledby="menuModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="menuModalLabel">
+                  {{ gastronomia.nome }}
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
 
-                  <!-- VISUALIZZA MENU -->
-                  <app-menu [menuItems]="selectedMenu.piatti"></app-menu>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn" data-bs-dismiss="modal">
-                    Chiudi
-                  </button>
-                </div>
+                <!-- VISUALIZZA MENU -->
+                <app-menu [menuItems]="selectedMenu.piatti"></app-menu>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" data-bs-dismiss="modal">
+                  Chiudi
+                </button>
               </div>
             </div>
           </div>
@@ -67,6 +63,7 @@
       </div>
     </div>
   </div>
+
   <div class="pagination-buttons">
     <button class="btn-customPage" [disabled]="page <= 0" (click)="previousPage()">
       Precedente

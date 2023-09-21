@@ -1,25 +1,91 @@
-.card {
-  background-color: white;
-  border: 1px solid #B22222;
-  transition: transform 0.2s;
-  box-shadow: 0 4px 8px rgba(1, 1, 1, 1);
-  border-radius: 5px;
-  color: black;
-  cursor: pointer;
+
+.sfondo {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.card {
+  height: 500px;
+  margin: 50px;
+  border-radius: 25px;
+  box-shadow: 5px 5px 20px black;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Cinzel', serif;
 }
 
 .card img {
-  margin: 0;
+  flex: 0 0 auto;
+  height: 100%;
+  width: auto;
+  object-fit: cover;
 }
 
+.card:hover img {
+  transform: none;
+}
 
-.card-title {
-  color: #b22222;
-  margin-bottom: 10px;
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.locale-name {
+  color: white;
+  margin: 0;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+.card .button-group {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.card:hover .button-group {
+  opacity: 1;
+}
+
+.card .d-flex.justify-content-end {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.hover-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  flex: 1;
+  padding-left: 20px;
+}
+
+.card:hover .hover-content {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .card button {
@@ -30,6 +96,7 @@
   border: none;
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .card button:hover {
@@ -47,10 +114,51 @@
   margin-top: 20px;
 }
 
-/* Colori di base */
+.bi-star:hover,
+.bi-star:hover ~ .bi-star,
+.bi-star-fill:hover,
+.bi-star-fill:hover ~ .bi-star,
+
+.bi-star-fill:hover ~ .bi-star-fill {
+    color: #b08d57 !important;
+    cursor: pointer;
+}
+
+.bi-star-fill {
+    color: #b08d57;
+}
+
+.bi-star {
+    color: #b08d57;
+    cursor: pointer;
+    font-size: x-large;
+    margin-right: 2rem;
+}
+
+.bi-star:hover, .bi-star-fill:hover {
+  transform: scale(1.9);
+}
+
+.custom-select {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-select:hover, .custom-select:focus {
+  border: 1px solid #b22222;
+  box-shadow: 0 0 5px rgba(178, 34, 34, 0.5);
+}
+
+.custom-select:first-child {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
 .custom-color {
-  background-color: #b08d57; /* giallo ocra */
-  color: #b22222; /* rosso pompeiano */
+  background-color: #b08d57;
+  color: #b22222;
 }
 
 
@@ -75,47 +183,28 @@
   cursor: not-allowed;
 }
 
-.bi-star:hover,
-.bi-star:hover ~ .bi-star,
-.bi-star-fill:hover,
-.bi-star-fill:hover ~ .bi-star,
-
-.bi-star-fill:hover ~ .bi-star-fill {
-    color: #b08d57 !important;
-    cursor: pointer;
+.light-modal .modal-content {
+  background-color: #f7f7f7;
+  color: #333;
+  border-radius: 15px;
 }
 
-
-.bi-star-fill {
-    color: #b08d57;
+.light-modal .modal-title {
+  font-weight: bold;
 }
 
-.bi-star {
-    color: black;
-    cursor: pointer;
+.light-modal .modal-header,
+.light-modal .modal-footer {
+  border-color: #ddd;
 }
 
-.bi-star:hover, .bi-star-fill:hover {
-  transform: scale(1.9);
+.light-modal .btn-close {
+  color: #333;
 }
 
-.custom-select {
-  background-color: #f9f9f9;
-  border-radius: 5px;
-  border: 1px solid #d1d1d1;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
+.light-modal .modal-body {
+  padding: 20px;
 }
-
-.custom-select:hover, .custom-select:focus {
-  border: 1px solid #b22222;
-  box-shadow: 0 0 5px rgba(178, 34, 34, 0.5);
-}
-
-.custom-select:first-child {
-  margin-top: 1rem;
-  margin-right: 1rem;
-}
-
 
 
 .spinner-container {
@@ -138,7 +227,7 @@
 }
 
 .spinner {
-  border: 16px solid #f3f3f3;
+  border: 12px solid #f3f3f3;
   border-top: 16px solid #b22222;
   border-radius: 50%;
   width: 50px;
