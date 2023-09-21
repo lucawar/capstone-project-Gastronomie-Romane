@@ -22,7 +22,7 @@ itemsPerPage: number = 5;
 nomeGastronomia!: string;
 isEditing: boolean = false;
 updatedData: any = {};
-editingPrenotazioneId: number | null = null;
+editingPrenotazioneId: string | null = null;
 
   constructor(private jsonService: JsonService ) { }
 
@@ -58,6 +58,13 @@ editingPrenotazioneId: number | null = null;
       this.currentPage++;
     }
   }
+
+nextPageGastronomiaPref() {
+  const totalItems = this.currentUser.gastronomie_preferite.length;
+  if ((this.currentPage + 1) * this.itemsPerPage < totalItems) {
+    this.currentPage++;
+  }
+}
 
   loadGastronomiePreferite(): void {
     if(this.currentUser) {

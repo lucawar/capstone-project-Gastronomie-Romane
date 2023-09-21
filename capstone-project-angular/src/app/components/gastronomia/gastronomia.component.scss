@@ -4,7 +4,6 @@
   padding: 0;
   height: 100%;
   width: 100%;
-  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
@@ -122,16 +121,18 @@
 .bi-star-fill:hover ~ .bi-star-fill {
     color: #b08d57 !important;
     cursor: pointer;
+    font-size:large;
 }
 
 .bi-star-fill {
     color: #b08d57;
+    font-size:large;
 }
 
 .bi-star {
     color: #b08d57;
     cursor: pointer;
-    font-size: x-large;
+    font-size: large;
     margin-right: 2rem;
 }
 
@@ -144,6 +145,8 @@
   border-radius: 5px;
   border: 1px solid #d1d1d1;
   transition: border 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 2rem;
+  margin-left: 2rem;
 }
 
 .custom-select:hover, .custom-select:focus {
