@@ -66,6 +66,13 @@ nextPageGastronomiaPref() {
   }
 }
 
+nextPagePrenotazioni() {
+  const totalItems = this.currentUser.prenotazioni.length;
+  if ((this.currentPage + 1) * this.itemsPerPage < totalItems) {
+    this.currentPage++;
+  }
+}
+
   loadGastronomiePreferite(): void {
     if(this.currentUser) {
       this.jsonService.getGastronomiePreferite().subscribe(

@@ -129,22 +129,22 @@
               </form>
               <div class="button-group">
                 <button (click)="onSubmitUpdate(prenotazione.id)" class="btn btn-success">Conferma</button>
-                <button (click)="editingPrenotazioneId = null" class="btn btn-danger">Annulla</button> <!-- Resetta qui -->
+                <button (click)="editingPrenotazioneId = null" class="btn btn-danger">Annulla</button>
               </div>
             </div>
           </div>
         </div>
-      </div> <!-- Questo chiude il div della card principale -->
+      </div>
     </div>
   </div>
  </div>
   <!-- Bottoni di paginazione -->
   <div class="mt-5 text-center">
     <button (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
-    <button (click)="nextPageGastronomiaPref()"
+    <button (click)="nextPagePrenotazioni()"
       [disabled]="(currentPage + 1) * itemsPerPage >= currentUser.recensioni.length">Successivo</button>
   </div>
-</div> <!-- Questo chiude il div principale -->
+</div>
 
 
 
