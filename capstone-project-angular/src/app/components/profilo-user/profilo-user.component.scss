@@ -38,6 +38,10 @@ h1 strong, h2 {
   transition: background-color 0.3s ease;
 }
 
+.btn-danger:hover{
+  background-color: #b08d57;
+}
+
 .btn-success{
   display: block;
   padding: 10px 20px;
@@ -60,8 +64,19 @@ h1 strong, h2 {
   transition: background-color 0.3s ease;
 }
 
-.btn-danger:hover{
-  background-color: #b08d57;
+.btn-customPage {
+  margin: 0 5px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #8B0000;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-customPage:hover {
+  background-color:#b22222;
 }
 
 .card-title {

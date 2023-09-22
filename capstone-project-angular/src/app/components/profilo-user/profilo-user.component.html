@@ -3,8 +3,8 @@
     <h1>Benvenuto, <strong>{{ currentUser.name }}</strong></h1>
     <div class="user-info mt-4">
       <p><i class="bi bi-envelope-open-fill"></i> Email: <strong>{{ currentUser.email }}</strong></p>
-      <p>Nome: <strong>{{ currentUser.name }}</strong></p>
-      <p>Cognome: <strong>{{ currentUser.surname }}</strong></p>
+      <p><i class="bi bi-person-square"></i>Nome: <strong>{{ currentUser.name }}</strong></p>
+      <p><i class="bi bi-person-square"></i>Cognome: <strong>{{ currentUser.surname }}</strong></p>
       <p><i class="bi bi-telephone-fill"></i> Numero telefono: <strong>{{ currentUser.numeroTelefono }}</strong></p>
     </div>
 
@@ -46,8 +46,8 @@
   </div>
   <!-- Bottoni di paginazione -->
   <div class="mt-5 text-center">
-   <button (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
-   <button (click)="nextPageGastronomiaPref()"
+   <button class="btn-customPage" (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
+   <button class="btn-customPage" (click)="nextPageGastronomiaPref()"
      [disabled]="(currentPage + 1) * itemsPerPage >= currentUser.recensioni.length">Successivo</button>
   </div>
 </div>
@@ -73,8 +73,8 @@
 
       <!-- Bottoni di paginazione -->
       <div class="text-center">
-      <button (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
-      <button (click)="nextPage()"
+      <button class="btn-customPage" (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
+      <button class="btn-customPage"  (click)="nextPage()"
         [disabled]="(currentPage + 1) * itemsPerPage >= currentUser.recensioni.length">Successivo</button>
       </div>
     </div>
@@ -142,8 +142,8 @@
  </div>
   <!-- Bottoni di paginazione -->
   <div class="mt-5 text-center">
-    <button (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
-    <button (click)="nextPagePrenotazioni()"
+    <button class="btn-customPage" (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
+    <button class="btn-customPage" (click)="nextPagePrenotazioni()"
       [disabled]="(currentPage + 1) * itemsPerPage >= currentUser.recensioni.length">Successivo</button>
   </div>
 </div>

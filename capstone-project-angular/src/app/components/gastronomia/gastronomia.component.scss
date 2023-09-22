@@ -167,6 +167,11 @@
   color: #b22222;
 }
 
+.form-control:focus {
+  border-color: #b22222;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+}
+
 
 .btn-customPage {
   margin: 0 5px;
@@ -179,15 +184,15 @@
   transition: background-color 0.3s ease;
 }
 
+.btn-customPage[disabled] {
+  background-color: #d1d1d1;
+  cursor: not-allowed;
+}
 
 .btn-customPage:hover {
   background-color:#b22222;
 }
 
-.btn-customPage[disabled] {
-  background-color: #d1d1d1;
-  cursor: not-allowed;
-}
 
 .light-modal .modal-content {
   background-color: #f7f7f7;
