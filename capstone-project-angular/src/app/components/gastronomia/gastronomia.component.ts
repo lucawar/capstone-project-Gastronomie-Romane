@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JsonService } from 'src/app/service/json.service';
 import { Gastronomia } from 'src/app/models/gastronomia';
-import { User } from 'src/app/models/user';
+import { debounceTime } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 
 
@@ -12,11 +13,13 @@ import { User } from 'src/app/models/user';
 })
 export class GastronomiaComponent implements OnInit {
 
+  private cercaNomeGastronomia = new Subject<string>();
   gastronomie: Gastronomia[] = [];
   public page: number = 0;
   public tipo: string[] = ['RISTORANTE', 'FORNO', 'ENOTECA', 'GELATERIA', 'OSTERIA', 'CAFFETTERIA', 'MERCATO'];
   public selezionaTipo: string = '';
   public selezionaPriceRange: string = '';
+  public selezionaNome: string = '';
   selectedMenu: any = null;
   selectedGastronomiaId: string | null = null;
   isLoading: boolean = false;
@@ -39,7 +42,13 @@ export class GastronomiaComponent implements OnInit {
   recensioneFormGastronomiaId!: number
 
 
-  constructor(private jsonService: JsonService) { }
+  constructor(private jsonService: JsonService) {
+    this.cercaNomeGastronomia.pipe(
+      debounceTime(800)
+    ).subscribe(searchTerm => {
+      this.getGastronomiaByNome();
+    });
+  }
 
   ngOnInit(): void {
     this.loadGastronomia();
@@ -56,9 +65,13 @@ export class GastronomiaComponent implements OnInit {
     }
   }
 
+  findByImputNomeGastronomia(value: string) {
+    this.cercaNomeGastronomia.next(value);
+  }
+
   loadGastronomia(): void {
     this.isLoading = true;
-    this.jsonService.getGastronomie(this.page, 10).subscribe(data => {
+    this.jsonService.getGastronomie(this.page, 12).subscribe(data => {
       console.log(data);
       if (Array.isArray(data.content)) {
         this.gastronomie = data.content;
@@ -70,6 +83,25 @@ export class GastronomiaComponent implements OnInit {
       console.error('Errore nella chiamata al servizio:', error);
       this.isLoading = false;
     });
+  }
+
+  getGastronomiaByNome(): void {
+    this.isLoading = true;
+    if (this.selezionaNome) {
+      this.jsonService.getGastronomiaByNome(this.selezionaNome).subscribe(data => {
+        if (Array.isArray(data.content)) {
+          this.gastronomie = data.content;
+        } else {
+          console.error('Formato dati inaspettato:', data);
+        }
+        this.isLoading = false;
+      }, error => {
+        console.error('Errore nella chiamata al servizio:', error);
+        this.isLoading = false;
+      });
+    } else {
+      this.loadGastronomia();
+    }
   }
 
   getGastronomieByTipo(): void {

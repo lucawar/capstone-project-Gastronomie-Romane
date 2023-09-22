@@ -2,15 +2,17 @@
 .sfondo {
   margin: 0;
   padding: 0;
+  background-image: linear-gradient(to bottom, #FEFEFE, #F2F2F2, #FEFEFE);
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
   z-index: -1;
+  font-family: 'Cinzel', serif;
 }
 
 .card {
-  height: 500px;
+  height: 400px;
   margin: 50px;
   border-radius: 25px;
   box-shadow: 5px 5px 20px black;
@@ -143,7 +145,7 @@
 .custom-select {
   background-color: #f9f9f9;
   border-radius: 5px;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #b22222;
   transition: border 0.3s ease, box-shadow 0.3s ease;
   margin-top: 2rem;
   margin-left: 2rem;
@@ -151,6 +153,7 @@
 
 .custom-select:hover, .custom-select:focus {
   border: 1px solid #b22222;
+  color: #b22222;
   box-shadow: 0 0 5px rgba(178, 34, 34, 0.5);
 }
 
@@ -208,6 +211,7 @@
 .light-modal .modal-body {
   padding: 20px;
 }
+
 
 
 .spinner-container {

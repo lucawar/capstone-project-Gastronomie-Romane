@@ -18,13 +18,13 @@ export class ProfiloUserComponent implements OnInit {
   showRecensioni = false;
   showPrenotazioni = false;
   currentPage: number = 0;
-itemsPerPage: number = 5;
-nomeGastronomia!: string;
-isEditing: boolean = false;
-updatedData: any = {};
-editingPrenotazioneId: string | null = null;
+  itemsPerPage: number = 5;
+  nomeGastronomia!: string;
+  isEditing: boolean = false;
+  updatedData: any = {};
+  editingPrenotazioneId: string | null = null;
 
-  constructor(private jsonService: JsonService ) { }
+  constructor(private jsonService: JsonService) { }
 
 
   ngOnInit(): void {
@@ -59,29 +59,29 @@ editingPrenotazioneId: string | null = null;
     }
   }
 
-nextPageGastronomiaPref() {
-  const totalItems = this.currentUser.gastronomie_preferite.length;
-  if ((this.currentPage + 1) * this.itemsPerPage < totalItems) {
-    this.currentPage++;
+  nextPageGastronomiaPref() {
+    const totalItems = this.currentUser.gastronomie_preferite.length;
+    if ((this.currentPage + 1) * this.itemsPerPage < totalItems) {
+      this.currentPage++;
+    }
   }
-}
 
-nextPagePrenotazioni() {
-  const totalItems = this.currentUser.prenotazioni.length;
-  if ((this.currentPage + 1) * this.itemsPerPage < totalItems) {
-    this.currentPage++;
+  nextPagePrenotazioni() {
+    const totalItems = this.currentUser.prenotazioni.length;
+    if ((this.currentPage + 1) * this.itemsPerPage < totalItems) {
+      this.currentPage++;
+    }
   }
-}
 
   loadGastronomiePreferite(): void {
-    if(this.currentUser) {
+    if (this.currentUser) {
       this.jsonService.getGastronomiePreferite().subscribe(
         response => {
-            console.log('Gastronomie Preferite ricevute:', response);
-            this.currentUser.gastronomie_preferite = response.content;
+          console.log('Gastronomie Preferite ricevute:', response);
+          this.currentUser.gastronomie_preferite = response.content;
         },
         error => {
-            console.error('Errore durante il recupero delle gastronomie preferite:', error);
+          console.error('Errore durante il recupero delle gastronomie preferite:', error);
         }
       );
     }
@@ -98,6 +98,7 @@ nextPagePrenotazioni() {
 
   loadPrenotazioniUtente(): void {
     this.jsonService.getPrenotazioniUtente().subscribe(response => {
+      console.log('Prenotazioni utente:', response);
       this.currentUser.prenotazioni = response.content;
 
       // Popoliamo i nomi delle gastronomie per ogni prenotazione.

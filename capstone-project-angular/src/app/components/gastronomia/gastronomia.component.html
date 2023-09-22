@@ -3,11 +3,16 @@
     <div class="spinner"></div>
   </div>
 
+  <div class="d-flex align-items-baseline justify-content-between">
+    <div class="d-flex">
+    <div>
   <select class="custom-select" [(ngModel)]="selezionaTipo" (change)="getGastronomieByTipo()">
     <option value="">Tutte le gastronomie</option>
     <option *ngFor="let tipoGastronomie of tipo">{{ tipoGastronomie }}</option>
   </select>
+</div>
 
+<div>
   <select class="custom-select" [(ngModel)]="selezionaPriceRange" (change)="getGastronomiaByPriceRange()">
     <option value="">Tutti i prezzi</option>
     <option value="0-50">0 - 50</option>
@@ -16,9 +21,21 @@
     <option value="200-250">200 - 250</option>
   </select>
 </div>
+</div>
+
+  <div class="input-group me-4 custom-select" style="width:25%">
+    <input type="text" class="form-control" placeholder="Cerca per nome" [(ngModel)]="selezionaNome" name="selezionaNome"  (ngModelChange)="findByImputNomeGastronomia($event)">
+    <div class="input-group-append">
+      <button (click)="getGastronomiaByNome()" class="btn btn-danger" type="button">Cerca</button>
+    </div>
+  </div>
+  </div>
+</div>
+
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4 mt-5" *ngFor="let gastronomia of gastronomie">
+    <div class="col-md-3 mt-5" *ngFor="let gastronomia of gastronomie">
       <div class="card mb-4">
         <div class="card-header">
           <h3 class="locale-name">{{ gastronomia.nome }}</h3>

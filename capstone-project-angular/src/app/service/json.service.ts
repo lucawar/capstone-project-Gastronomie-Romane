@@ -26,6 +26,10 @@ export class JsonService {
     return this.http.get(`${this.baseURL}/gastronomia/cerca?prezzoMin=${minPrice}&prezzoMax=${maxPrice}`);
   }
 
+  getGastronomiaByNome(nome:string): Observable<any> {
+    return this.http.get(`${this.baseURL}/gastronomia/cerca?nome=${nome}`);
+  }
+
   getMenuByGastronomia(gastronomiaId: string): Observable<any> {
     return this.http.get<any>(`${this.baseURL}/gastronomia/${gastronomiaId}/menu`);
   }

@@ -1,4 +1,4 @@
-<div class="container-fluid my-5">
+<div class="container-fluid sfondo my-5">
   <div *ngIf="gastronomia" class="col-lg-8 col-md-10 col-sm-12 mx-auto">
     <div class="card shadow-lg">
       <img [src]="gastronomia.imageUrl" alt="Immagine di {{ gastronomia.nome }}" class="card-img-top rounded-top" />
@@ -21,7 +21,7 @@
      <div class="button-group">
         <!-- BUTTON RECENSIONI -->
         <button type="button" class="btn mx-3" (click)="loadRecensioniForGastronomia(gastronomia.id)">
-          Visualizza Recensioni
+          Recensioni
         </button>
 
         <!-- MODULO PER INSERIRE RECENSIONE -->

@@ -4,17 +4,20 @@
           <a class="navbar-brand" href="#">
               <!-- Possibile logo-->
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                  aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                  aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse">
+          <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav mb-4">
                   <li>
-                      <a class="nav-link link-danger text-white" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+                      <a class="nav-link link-danger text-white" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><i class="bi bi-house-fill mx-1"></i>Home</a>
                   </li>
                   <li>
-                      <a class="nav-link link-danger text-white" [routerLink]="['gastronomia']" routerLinkActive="active">Gastronomie</a>
+                      <a class="nav-link link-danger text-white" [routerLink]="['gastronomia']" routerLinkActive="active"><i class="bi bi-bank2 mx-1"></i>Gastronomie</a>
+                  </li>
+                  <li *ngIf="isLoggedIn()">
+                    <a class="nav-link link-danger text-white" [routerLink]="['profilo']" routerLinkActive="active"><i class="bi bi-person-circle mx-1"></i>Profilo</a>
                   </li>
 
               </ul>
@@ -30,8 +33,7 @@
                 <a class="nav-link link-danger text-white" [routerLink]="['register']" routerLinkActive="active">Registrati</a>
             </li>
             <li *ngIf="isLoggedIn()" class="d-flex align-items-center">
-                <h6 class="welcomeMessage text-black">Benvenuto {{user?.name }} </h6>
-                <a class="nav-link link-danger text-white profile-link" [routerLink]="['profilo']" routerLinkActive="active">Profilo</a>
+                <h6 class="welcomeMessage text-black">Benvenuto <strong>{{user?.name }}</strong> </h6>
                 <button type="button" class="btn custom-logout-button" (click)="logout()">Log out</button>
             </li>
         </ul>

@@ -1,9 +1,10 @@
 <div class="container-fluid my-5 sfondo">
   <div *ngIf="currentUser" class="profile-section">
-    <h1>Benvenuto, <strong class="text-danger">{{ currentUser.name }}</strong></h1>
+    <h1>Benvenuto, <strong>{{ currentUser.name }}</strong></h1>
     <div class="user-info mt-4">
       <p><i class="bi bi-envelope-open-fill"></i> Email: <strong>{{ currentUser.email }}</strong></p>
-      <p>Username: <strong>{{ currentUser.username }}</strong></p>
+      <p>Nome: <strong>{{ currentUser.name }}</strong></p>
+      <p>Cognome: <strong>{{ currentUser.surname }}</strong></p>
       <p><i class="bi bi-telephone-fill"></i> Numero telefono: <strong>{{ currentUser.numeroTelefono }}</strong></p>
     </div>
 
@@ -12,9 +13,10 @@
       <button (click)="showRecensioni = !showRecensioni" class="btn btn-danger">Recensioni Utente</button>
       <button (click)="showPrenotazioni = !showPrenotazioni" class="btn btn-danger">Prenotazioni Utente</button>
     </div>
+  </div>
 <!-- GASTRONOMIE PREFERITE -->
 <div *ngIf="showGastronomie" class="section mt-4">
-  <h2>Gastronomie Preferite</h2>
+  <h2 class="text-center"><strong>Gastronomie Preferite</strong></h2>
   <div class="row">
     <div class="col-md-6 my-3" *ngFor="let gastronomia of currentUser.gastronomie_preferite.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)">
       <div class="card mx-2 h-100">
@@ -52,7 +54,7 @@
 
     <!-- RECENSIONI UTENTE -->
     <div *ngIf="showRecensioni" class="section">
-      <h2>Recensioni dell'utente:</h2>
+      <h2 class="text-center"><strong>Recensioni dell'utente:</strong></h2>
       <ul>
         <li
           *ngFor="let recensione of currentUser.recensioni.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)">
@@ -79,7 +81,7 @@
 
 <!-- PRENOTAZIONI UTENTE -->
 <div *ngIf="showPrenotazioni" class="section my-3">
-  <h2>Prenotazioni Utente:</h2>
+  <h2 class="text-center"><strong>Prenotazioni Utente:</strong></h2>
   <div class="row">
     <div *ngFor="let prenotazione of currentUser.prenotazioni" class="col-md-4 my-2">
       <div class="card">
@@ -144,6 +146,7 @@
     <button (click)="nextPagePrenotazioni()"
       [disabled]="(currentPage + 1) * itemsPerPage >= currentUser.recensioni.length">Successivo</button>
   </div>
+</div>
 </div>
 
 
