@@ -19,7 +19,6 @@
                   <li *ngIf="isLoggedIn()">
                     <a class="nav-link link-danger text-white" [routerLink]="['profilo']" routerLinkActive="active"><i class="bi bi-person-circle mx-1"></i>Profilo</a>
                   </li>
-
               </ul>
           </div>
       </div>
@@ -34,7 +33,7 @@
             </li>
             <li *ngIf="isLoggedIn()" class="d-flex align-items-center">
                 <h6 class="welcomeMessage text-black">Benvenuto <strong>{{user?.name }}</strong> </h6>
-                <button type="button" class="btn custom-logout-button" (click)="logout()">Log out</button>
+                <button type="button" class="btn custom-logout-button" (click)="logout()">Log-out</button>
             </li>
         </ul>
     </div>

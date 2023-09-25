@@ -128,4 +128,9 @@ h1 strong, h2 {
   box-shadow: 0 0 0 0.2rem rgba(178, 34, 34, 0.25);
 }
 
-
+@media (max-width: 768px) {
+  .button-section {
+    margin: 0 !important;
+    flex-direction: column;
+  }
+}

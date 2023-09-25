@@ -139,7 +139,7 @@
 }
 
 .bi-star:hover, .bi-star-fill:hover {
-  transform: scale(1.9);
+  transform: scale(1.5);
 }
 
 .custom-select {
@@ -245,4 +245,16 @@
   width: 50px;
   height: 50px;
   animation: spin 2s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .filtri-ricerca {
+    margin: 0 !important;
+      flex-direction: column;
+  }
+  .filtro-ricercaNome {
+    width: 100% !important;
+    margin: 0;
+    margin-top: 1rem;
+}
 }

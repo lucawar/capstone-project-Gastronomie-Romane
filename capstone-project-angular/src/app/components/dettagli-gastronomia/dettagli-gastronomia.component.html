@@ -9,15 +9,18 @@
           <i *ngIf="isFavorited(gastronomia.id)" class="bi bi-star-fill starPreferiti" (click)="rimuoviDaiPreferiti(gastronomia.id)" title="Rimuovi dai preferiti"></i>
         </div>
 
-        <h4 class="card-title my-3">{{ gastronomia.nome }}</h4>
+        <div class="card-title my-3 text-center">
+        <h4>{{ gastronomia.nome }}</h4>
+        </div>
 
-        <p class="card-text mb-4">
-          <strong>Indirizzo:</strong> {{ gastronomia.indirizzo }}<br />
-          <strong><i class="bi bi-telephone-fill"></i></strong> {{ gastronomia.telefono }}<br />
-          <strong>Descrizione:</strong> {{ gastronomia.descrizione }}<br />
-          <strong>Tipo:</strong> {{ gastronomia.tipoGastronomia }}<br />
-          <strong>Prezzo medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}
-        </p>
+        <div class="card-text mb-4">
+         <p> <strong>Indirizzo:</strong> {{ gastronomia.indirizzo }}</p>
+          <p><strong>Telefono</strong> {{ gastronomia.telefono }}</p>
+          <p><strong>Descrizione:</strong> {{ gastronomia.descrizione }}</p>
+          <p><strong>Tipo:</strong> {{ gastronomia.tipoGastronomia }}</p>
+         <p><strong>Prezzo medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}</p>
+        </div>
+
      <div class="button-group">
         <!-- BUTTON RECENSIONI -->
         <button type="button" class="btn mx-3" (click)="loadRecensioniForGastronomia(gastronomia.id)">

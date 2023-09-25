@@ -3,7 +3,7 @@
     <div class="spinner"></div>
   </div>
 
-  <div class="d-flex align-items-baseline justify-content-between">
+  <div class="d-flex align-items-baseline justify-content-between filtri-ricerca">
     <div class="d-flex">
     <div>
   <select class="custom-select" [(ngModel)]="selezionaTipo" (change)="getGastronomieByTipo()">
@@ -23,7 +23,7 @@
 </div>
 </div>
 
-  <div class="input-group me-4 custom-select" style="width:25%">
+  <div class="input-group me-4 custom-select filtro-ricercaNome" style="width:25%">
     <input type="text" class="form-control" placeholder="Cerca per nome" [(ngModel)]="selezionaNome" name="selezionaNome"  (ngModelChange)="findByImputNomeGastronomia($event)">
     <div class="input-group-append">
       <button (click)="getGastronomiaByNome()" class="btn btn-danger" type="button"><i class="bi bi-search mx-1"></i>Cerca</button>
