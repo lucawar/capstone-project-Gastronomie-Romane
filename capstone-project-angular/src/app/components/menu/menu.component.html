@@ -1,6 +1,8 @@
 <div class="container-fluid">
 <div *ngFor="let category of categories">
+  <div class="text-white text-center p-1 mx-2 categorie">
   <h6>{{ category }}</h6>
+  </div>
   <ng-container *ngIf="organizzaMenu[category] as categoryItems">
     <ul class="menu-list" *ngIf="categoryItems.length > 0">
       <li *ngFor="let item of categoryItems">
