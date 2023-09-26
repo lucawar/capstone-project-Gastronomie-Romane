@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Route, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {NgxPaginationModule} from 'ngx-pagination';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AuthGuard } from './auth/auth.guard';
 
 
 import { AppComponent } from './app.component';
@@ -28,13 +28,7 @@ const routes: Route[] = [
   },
   {
     path: 'home',
-    component: HomeComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent
-      }
-    ]
+    component: HomeComponent
   },
   {
     path: 'login',
@@ -46,15 +40,19 @@ const routes: Route[] = [
   },
   {
     path: 'gastronomia',
-    component: GastronomiaComponent
+    component: GastronomiaComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'profilo',
-    component: ProfiloUserComponent
+    component: ProfiloUserComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'gastronomia/:id',
-    component: DettagliGastronomiaComponent
+    component: DettagliGastronomiaComponent,
+    canActivate: [AuthGuard]
   }
 ]
 @NgModule({

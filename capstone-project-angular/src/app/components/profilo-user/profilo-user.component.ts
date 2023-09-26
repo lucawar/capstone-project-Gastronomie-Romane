@@ -96,12 +96,19 @@ export class ProfiloUserComponent implements OnInit {
     });
   }
 
+  getRatingStars(valutazione: number): boolean[] {
+    let stars: boolean[] = Array(5).fill(false);
+    for (let i = 0; i < 5; i++) {
+      stars[i] = i < valutazione;
+    }
+    return stars;
+  }
+
+
   loadPrenotazioniUtente(): void {
     this.jsonService.getPrenotazioniUtente().subscribe(response => {
       console.log('Prenotazioni utente:', response);
       this.currentUser.prenotazioni = response.content;
-
-      // Popoliamo i nomi delle gastronomie per ogni prenotazione.
       this.currentUser.prenotazioni.forEach(prenotazione => {
         this.jsonService.findByGastronomiaId(prenotazione.gastronomia).subscribe(
           dettagliGastronomia => {

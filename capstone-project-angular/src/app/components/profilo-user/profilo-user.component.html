@@ -14,140 +14,185 @@
       <button (click)="showPrenotazioni = !showPrenotazioni" class="btn btn-danger">Prenotazioni Utente</button>
     </div>
   </div>
-<!-- GASTRONOMIE PREFERITE -->
-<div *ngIf="showGastronomie" class="section mt-4">
-  <h2 class="text-center"><strong>Gastronomie Preferite</strong></h2>
-  <div class="row">
-    <div class="col-md-6 my-3" *ngFor="let gastronomia of currentUser.gastronomie_preferite.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)">
-      <div class="card mx-2 h-100">
-        <div class="row no-gutters">
-          <div class="col-md-5">
-            <img [src]="gastronomia.imageUrl" alt="{{ gastronomia.nome }}" class="card-img-left">
-          </div>
-          <div class="col-md-7">
-            <div class="card-body">
-              <h5 class="card-title text-center"><strong>{{ gastronomia.nome }}</strong></h5>
-              <p class="card-text"><strong>Indirizzo:</strong> {{ gastronomia.indirizzo }}</p>
-              <hr>
-              <p class="card-text"><strong>Telefono:</strong> {{ gastronomia.telefono }}</p>
-              <hr>
-              <p class="card-text"><strong>Prezzo Medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}</p>
-              <hr>
-              <p class="card-text"><strong>Descrizione:</strong> {{ gastronomia.descrizione }}</p>
-              <hr>
-              <p class="card-text"><strong>Tipo Gastronomia:</strong> {{ gastronomia.tipoGastronomia }}</p>
-              <hr>
-              <button (click)="onDeleteGastronomiaPreferita(gastronomia.id)" class="btn btn-danger"> <i class="bi bi-trash-fill"></i>Rimuovi</button>
+  <!-- GASTRONOMIE PREFERITE -->
+  <div *ngIf="showGastronomie" class="section mt-4">
+    <h2 class="text-center"><strong>Gastronomie Preferite</strong></h2>
+    <div class="row">
+      <div class="col-md-6 my-3"
+        *ngFor="let gastronomia of currentUser.gastronomie_preferite.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)">
+        <div class="card mx-2 h-100">
+          <div class="row no-gutters">
+            <div class="col-md-5">
+              <img [src]="gastronomia.imageUrl" alt="{{ gastronomia.nome }}" class="card-img-left">
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Bottoni di paginazione -->
-  <div class="mt-5 text-center">
-   <button class="btn-customPage" (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
-   <button class="btn-customPage" (click)="nextPageGastronomiaPref()"
-     [disabled]="(currentPage + 1) * itemsPerPage >= currentUser.recensioni.length">Successivo</button>
-  </div>
-</div>
-
-    <!-- RECENSIONI UTENTE -->
-    <div *ngIf="showRecensioni" class="section">
-      <h2 class="text-center"><strong>Recensioni dell'utente:</strong></h2>
-      <ul>
-        <li
-          *ngFor="let recensione of currentUser.recensioni.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)">
-          <div>
-            <strong>Data:</strong> {{ recensione.data }}
-          </div>
-          <div>
-            <strong>Valutazione:</strong> {{ recensione.valutazione }}
-          </div>
-          <div>
-            <strong>Commento:</strong> {{ recensione.commento }}
-          </div>
-          <hr>
-        </li>
-      </ul>
-
-      <!-- Bottoni di paginazione -->
-      <div class="text-center">
-      <button class="btn-customPage" (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
-      <button class="btn-customPage"  (click)="nextPage()"
-        [disabled]="(currentPage + 1) * itemsPerPage >= currentUser.recensioni.length">Successivo</button>
-      </div>
-    </div>
-
-<!-- PRENOTAZIONI UTENTE -->
-<div *ngIf="showPrenotazioni" class="section my-3">
-  <h2 class="text-center"><strong>Prenotazioni Utente:</strong></h2>
-  <div class="row">
-    <div *ngFor="let prenotazione of currentUser.prenotazioni" class="col-md-4 my-2">
-      <div class="card">
-        <div class="card-body">
-          <p><strong>Nome gastronomia:</strong> {{ prenotazione.gastronomia }}</p>
-          <p><strong>Data Prenotazione:</strong> {{ prenotazione.dataPrenotazione }}</p>
-          <p><strong>Ora Prenotazione:</strong> {{ prenotazione.oraPrenotazione }}</p>
-          <p><strong>Numero persone:</strong> {{ prenotazione.numeroPersone }}</p>
-          <p><strong>Nota:</strong> {{ prenotazione.nota }}</p>
-          <div class="button-group d-flex justify-content-start mb-3">
-            <button (click)="editingPrenotazioneId = prenotazione.id" *ngIf="editingPrenotazioneId !== prenotazione.id" class="btn btn-primary mx-2"><i class="bi bi-pencil-fill"></i> Modifica</button>
-            <button (click)="onDeletePrenotazione(prenotazione.id)" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Elimina</button>
-          </div>
-
-
-        <!-- FORM MODIFICA PRENOTAZIONE -->
-        <div *ngIf="editingPrenotazioneId === prenotazione.id">
-          <div class="mt-4">
-            <div class="card-header custom-color text-black">
-              Modifica Prenotazione
-            </div>
-            <div class="card-body">
-              <form>
-                <div class="mb-3">
-                  <label for="dataPrenotazione" class="form-label">Data:</label>
-                  <input [(ngModel)]="updatedData.dataPrenotazione" type="date" name="dataPrenotazione"
-                    class="form-control" id="dataPrenotazione">
-                </div>
-
-                <div class="mb-3">
-                  <label for="oraPrenotazione" class="form-label">Ora:</label>
-                  <input [(ngModel)]="updatedData.oraPrenotazione" type="time" name="oraPrenotazione"
-                    class="form-control" id="oraPrenotazione">
-                </div>
-
-                <div class="mb-3">
-                  <label for="numeroPersone" class="form-label">Numero di persone:</label>
-                  <input [(ngModel)]="updatedData.numeroPersone" type="number" name="numeroPersone" min="1"
-                    class="form-control" id="numeroPersone">
-                </div>
-
-                <div class="mb-3">
-                  <label for="note" class="form-label">Note:</label>
-                  <textarea [(ngModel)]="updatedData.nota" name="note" class="form-control" id="note"
-                    rows="3"></textarea>
-                </div>
-              </form>
-              <div class="button-group">
-                <button (click)="onSubmitUpdate(prenotazione.id)" class="btn btn-success">Conferma</button>
-                <button (click)="editingPrenotazioneId = null" class="btn btn-danger">Annulla</button>
+            <div class="col-md-7">
+              <div class="card-body">
+                <h5 class="card-title text-center"><strong>{{ gastronomia.nome }}</strong></h5>
+                <p class="card-text"><strong>Indirizzo:</strong> {{ gastronomia.indirizzo }}</p>
+                <hr>
+                <p class="card-text"><strong>Telefono:</strong> {{ gastronomia.telefono }}</p>
+                <hr>
+                <p class="card-text"><strong>Prezzo Medio:</strong> {{ gastronomia.prezzoMedio | currency:'EUR' }}</p>
+                <hr>
+                <p class="card-text"><strong>Descrizione:</strong> {{ gastronomia.descrizione }}</p>
+                <hr>
+                <p class="card-text"><strong>Tipo Gastronomia:</strong> {{ gastronomia.tipoGastronomia }}</p>
+                <hr>
+                <button (click)="onDeleteGastronomiaPreferita(gastronomia.id)" class="btn btn-danger"> <i
+                    class="bi bi-trash-fill"></i>Rimuovi</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Bottoni di paginazione -->
+    <div class="mt-5 text-center">
+      <button class="btn-customPage" (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
+      <button class="btn-customPage" (click)="nextPageGastronomiaPref()"
+        [disabled]="(currentPage + 1) * itemsPerPage >= currentUser.recensioni.length">Successivo</button>
+    </div>
   </div>
- </div>
-  <!-- Bottoni di paginazione -->
-  <div class="mt-5 text-center">
-    <button class="btn-customPage" (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
-    <button class="btn-customPage" (click)="nextPagePrenotazioni()"
-      [disabled]="(currentPage + 1) * itemsPerPage >= currentUser.recensioni.length">Successivo</button>
+
+  <!-- RECENSIONI UTENTE -->
+  <div *ngIf="showRecensioni" class="section">
+    <h2 class="text-center"><strong>Recensioni dell'utente:</strong></h2>
+    <ul>
+      <li
+        *ngFor="let recensione of currentUser.recensioni.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)">
+        <div>
+          <strong>Data:</strong> {{ recensione.data }}
+        </div>
+        <div>
+          <span *ngFor="let star of getRatingStars(recensione.valutazione)">
+            <i *ngIf="star" class="bi bi-star-fill"></i>
+            <i *ngIf="!star" class="bi bi-star"></i>
+          </span><br>
+        </div>
+        <div>
+          <strong>Commento:</strong> {{ recensione.commento }}
+        </div>
+        <hr>
+      </li>
+    </ul>
+
+    <!-- Bottoni di paginazione -->
+    <div class="text-center">
+      <button class="btn-customPage" (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
+      <button class="btn-customPage" (click)="nextPage()"
+        [disabled]="(currentPage + 1) * itemsPerPage >= currentUser.recensioni.length">Successivo</button>
+    </div>
   </div>
-</div>
-</div>
+
+  <!-- PRENOTAZIONI UTENTE -->
+  <div *ngIf="showPrenotazioni" class="section my-3">
+    <h2 class="text-center"><strong>Prenotazioni Utente:</strong></h2>
+    <div class="row">
+      <div *ngFor="let prenotazione of currentUser.prenotazioni" class="col-md-4 my-2">
+        <div class="card">
+          <div class="card-body">
+            <p><strong>Nome gastronomia:</strong> {{ prenotazione.gastronomia }}</p>
+            <p><strong>Data Prenotazione:</strong> {{ prenotazione.dataPrenotazione }}</p>
+            <p><strong>Ora Prenotazione:</strong> {{ prenotazione.oraPrenotazione }}</p>
+            <p><strong>Numero persone:</strong> {{ prenotazione.numeroPersone }}</p>
+            <p><strong>Nota:</strong> {{ prenotazione.nota }}</p>
+            <div class="button-group d-flex justify-content-start mb-3">
+              <button (click)="editingPrenotazioneId = prenotazione.id"
+                *ngIf="editingPrenotazioneId !== prenotazione.id" class="btn btn-primary mx-2"><i
+                  class="bi bi-pencil-fill"></i> Modifica</button>
+              <button (click)="onDeletePrenotazione(prenotazione.id)" class="btn btn-danger"><i
+                  class="bi bi-trash-fill"></i> Elimina</button>
+            </div>
 
 
+            <!-- FORM MODIFICA PRENOTAZIONE -->
+            <div *ngIf="editingPrenotazioneId === prenotazione.id">
+              <div class="mt-4">
+                <div class="card-header custom-color text-black">
+                  Modifica Prenotazione
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="dataPrenotazione" class="form-label">Data:</label>
+                      <input [(ngModel)]="updatedData.dataPrenotazione" type="date" name="dataPrenotazione"
+                        class="form-control" id="dataPrenotazione">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="oraPrenotazione" class="form-label">Ora:</label>
+                      <input [(ngModel)]="updatedData.oraPrenotazione" type="time" name="oraPrenotazione"
+                        class="form-control" id="oraPrenotazione">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="numeroPersone" class="form-label">Numero di persone:</label>
+                      <input [(ngModel)]="updatedData.numeroPersone" type="number" name="numeroPersone" min="1"
+                        class="form-control" id="numeroPersone">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="note" class="form-label">Note:</label>
+                      <textarea [(ngModel)]="updatedData.nota" name="note" class="form-control" id="note"
+                        rows="3"></textarea>
+                    </div>
+                  </form>
+                  <div class="button-group">
+                    <button (click)="onSubmitUpdate(prenotazione.id)" class="btn btn-success">Conferma</button>
+                    <button (click)="editingPrenotazioneId = null" class="btn btn-danger">Annulla</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bottoni di paginazione -->
+    <div class="mt-5 text-center">
+      <button class="btn-customPage" (click)="previousPage()" [disabled]="currentPage === 0">Precedente</button>
+      <button class="btn-customPage" (click)="nextPagePrenotazioni()"
+        [disabled]="(currentPage + 1) * itemsPerPage >= currentUser.recensioni.length">Successivo</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer mt-auto py-3 bg-dark text-white">
+  <div class="container-fluid">
+    <div class="row d-flex justify-content-between align-items-center">
+
+      <div class="col-md-4 text-center">
+        <h5><strong>Collegamenti Utili</strong></h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white"><i class="bi bi-house-door mx-2"></i>Home</a></li>
+          <li><a href="#" class="text-white"><i class="bi bi-list-check mx-2"></i>Menu</a></li>
+          <li><a href="#" class="text-white"><i class="bi bi-envelope-open mx-2"></i>Contattaci</a></li>
+          <li><a href="#" class="text-white"><i class="bi bi-calendar-check mx-2"></i>Prenota un tavolo</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h5><strong>Contatti</strong></h5>
+        <address>
+          Via Roma, 123<br>
+          00100 Roma, Italia<br>
+          Tel: +39 06 12345678<br>
+          Email: info@gastronomiaromana.it
+        </address>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h5><strong>Seguici sui Social</strong></h5>
+         <a href="https://github.com/lucawar" class="text-white mx-3"><i class="bi bi-github"></i></a>
+        <a href="https://www.linkedin.com/in/luca-guerra-505654143/" class="text-white mx-3"><i class="bi bi-linkedin"></i></a>
+        <a href="#" class="text-white mx-3"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="text-white mx-3"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="text-white mx-3"><i class="bi bi-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-3">
+    © 2023 Gastronomia Romana. Tutti i diritti riservati.
+  </div>
+</footer>
 

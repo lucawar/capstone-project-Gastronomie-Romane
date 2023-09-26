@@ -4,13 +4,17 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { BehaviorSubject,} from 'rxjs';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  currentUser: any = null;
+  currentUser!: User;
+  private authSubj = new BehaviorSubject<null | User>(null);
+  user$ = this.authSubj.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +23,8 @@ export class AuthService {
     return this.http.post<any>('http://localhost:3001/auth/login', credentials)
       .pipe(map(response => {
         if (response.accessToken) {
+          this.authSubj.next(response);
+          this.currentUser = response;
           console.log('Token:', response.accessToken);
           localStorage.setItem('token', response.accessToken);
         }

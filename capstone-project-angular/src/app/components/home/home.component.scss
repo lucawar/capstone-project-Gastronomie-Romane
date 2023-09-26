@@ -17,6 +17,7 @@
 
 .content-row.intro-row {
   flex-direction: row-reverse;
+  margin-top: 7rem;
 }
 
 .content-image, .content-grid, .content-text {
@@ -57,9 +58,15 @@
   gap: 20px;
 }
 
+.carousel-section {
+  border-radius: 25px;
+}
+
 .carosello-img {
   height: 300px;
   object-fit: cover;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .footer {
@@ -77,6 +84,12 @@
 .footer-col {
   margin-left: auto;
   margin-right: auto;
+}
+
+.bi {
+  margin-right: 2px;
+  font-size: 18px;
+  color: #b08d57;
 }
 
 

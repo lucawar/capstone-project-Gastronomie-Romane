@@ -11,6 +11,10 @@
   font-family: 'Cinzel', serif;
 }
 
+.filtri-ricerca {
+  background-color: #FFFFFF;
+}
+
 .card {
   height: 400px;
   margin: 50px;
@@ -112,7 +116,14 @@
 .pagination-buttons {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+}
+
+.bi {
+  margin-right: 2px;
+  font-size: 18px;
+  color: #b08d57;
 }
 
 .bi-star:hover,
