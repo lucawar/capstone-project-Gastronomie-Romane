@@ -2,7 +2,7 @@
 
 ## INDIRIZZO HTTP BACK-END CAPSTONE PROJECT (JAVA SPRING)
 
-💥💥💥https://github.com/lucawar/capstone-project/tree/develop💥💥💥
+💥💥💥 https://github.com/lucawar/capstone-project/tree/develop 💥💥💥
 
 ## DESCRIZIONE
 
