@@ -22,7 +22,7 @@
 
 - **Frontend**: Angular
 - **Backend**: Java Spring
-- **Altri Tool**: Postman, PgAdmin
+- **Altri Tool**: Eclipse, VScode, Postman, PgAdmin
 
 ## Installazione e Uso
 
