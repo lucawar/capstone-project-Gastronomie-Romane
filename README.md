@@ -24,7 +24,9 @@
 - **Backend**: Java Spring
 - **Altri Tool**: Eclipse, VScode, Postman, PgAdmin
 
-## Installazione e Uso
+## INSTALLAZIONE ED USO
+
+## 🖊️ AUTORE
 
 
  
