@@ -1,43 +1,49 @@
 <nav class="navbar navbar-expand-lg navbar-custom">
   <div class="container-fluid ">
-      <div class="navbar-left">
-          <a class="navbar-brand" href="#">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                  aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav mb-4">
-                <li>
-                  <img src="../../../assets/logo_capstone_project_1-PhotoRoom.png-PhotoRoom.png" alt="logo" class="logo">
-                </li>
-                  <li>
-                      <a class="nav-link link-danger text-white" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><i class="bi bi-house-fill mx-1"></i>Home</a>
-                  </li>
-                  <li>
-                      <a class="nav-link link-danger text-white" [routerLink]="['gastronomia']" routerLinkActive="active"><i class="bi bi-bank2 mx-1"></i>Gastronomie</a>
-                  </li>
-                  <li *ngIf="isLoggedIn()">
-                    <a class="nav-link link-danger text-white" [routerLink]="['profilo']" routerLinkActive="active"><i class="bi bi-person-circle mx-1"></i>Profilo</a>
-                  </li>
-              </ul>
-          </div>
-      </div>
+    <div class="navbar-left">
+      <a class="navbar-brand" href="#">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse my-0" id="navbarResponsive">
+        <ul class="navbar-nav mb-4">
 
-      <div class="navbar-right">
-        <ul class="navbar-nav">
-            <li *ngIf="!isLoggedIn()">
-                <a class="nav-link link-danger text-white" [routerLink]="['login']" routerLinkActive="active">Login</a>
-            </li>
-            <li *ngIf="!isLoggedIn()">
-                <a class="nav-link link-danger text-white" [routerLink]="['register']" routerLinkActive="active">Registrati</a>
-            </li>
-            <li *ngIf="isLoggedIn()" class="d-flex align-items-center">
-                <h6 class="welcomeMessage text-black">Benvenuto <strong>{{user?.name }}</strong> </h6>
-                <button type="button" class="btn custom-logout-button" (click)="logout()">Log-out</button>
-            </li>
+          <li>
+            <a class="nav-link link-danger text-white" [routerLink]="['/']" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"><i class="bi bi-house-fill mx-1"></i>Home</a>
+          </li>
+          <li>
+            <a class="nav-link link-danger text-white" [routerLink]="['gastronomia']" routerLinkActive="active"><i
+                class="bi bi-bank2 mx-1"></i>Gastronomie</a>
+          </li>
+          <li *ngIf="isLoggedIn()">
+            <a class="nav-link link-danger text-white" [routerLink]="['profilo']" routerLinkActive="active"><i
+                class="bi bi-person-circle mx-1"></i>Profilo</a>
+          </li>
         </ul>
+      </div>
     </div>
-</div>
+
+    <div class="d-flex">
+        <img src="../../../assets/logo_capstone_project_1-PhotoRoom.png-PhotoRoom.png" alt="logo" class="logo m-2">
+    </div>
+
+    <div class="navbar-right">
+      <ul class="navbar-nav">
+        <li *ngIf="!isLoggedIn()">
+          <a class="nav-link link-danger text-white" [routerLink]="['login']" routerLinkActive="active">Login</a>
+        </li>
+        <li *ngIf="!isLoggedIn()">
+          <a class="nav-link link-danger text-white" [routerLink]="['register']"
+            routerLinkActive="active">Registrati</a>
+        </li>
+        <li *ngIf="isLoggedIn()" class="d-flex align-items-center">
+          <h6 class="welcomeMessage text-black">Benvenuto <strong>{{user?.name }}</strong> </h6>
+          <button type="button" class="btn custom-logout-button" (click)="logout()">Log-out</button>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>

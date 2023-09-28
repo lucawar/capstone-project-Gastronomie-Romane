@@ -2,6 +2,7 @@
 .navbar-custom {
   background-image: linear-gradient(to right,#b08d57, #dcdcdc);
   font-family: 'Cinzel', serif;
+  max-height: 75px;
 }
 
 .custom-logout-button {
@@ -46,7 +47,13 @@ a:hover {
 }
 
 .logo {
- width: 100px;
+ width: 90px;
 }
 
 
+@media (max-width: 768px) {
+  .navbar-custom{
+    max-height: 400px;
+  }
+
+}
