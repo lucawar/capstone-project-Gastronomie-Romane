@@ -30,9 +30,9 @@
 
 Assicurarsi di avere installato correttamente ANGULAR nel proprio PC.
 
-Installare Node.js & npm ( verificare sui relativi siti come fare a seconda del proprio OS )
+Installare Node.js & npm 
 
-Installare la versione stabile più recente di Angular npm install -g @angular/cli
+Installare la versione più recente di Angular: npm install -g @angular/cli
 
 Clonare il progetto ed eseguire le seguenti istruzioni per avviare l'app:
 
