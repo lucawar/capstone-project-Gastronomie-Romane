@@ -20,10 +20,6 @@ h1 strong, h2 {
   overflow: hidden;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-}
-
 .btn-danger {
   display: block;
   padding: 10px 20px;
@@ -124,6 +120,12 @@ h1 strong, h2 {
 .form-control:focus {
   border-color: #b22222;
   box-shadow: 0 0 0 0.2rem rgba(178, 34, 34, 0.25);
+}
+
+.bi-star, .bi-star-fill {
+  margin-right: 2px;
+  font-size: 18px;
+  color: #b08d57;
 }
 
 @media (max-width: 768px) {

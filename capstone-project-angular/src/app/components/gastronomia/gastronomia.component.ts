@@ -223,7 +223,6 @@ export class GastronomiaComponent implements OnInit {
     this.jsonService.aggiungiPreferitiGastronomia(gastronomiaId).subscribe(
       response => {
         console.log('Gastronomia aggiunta con successo ai preferiti!', response);
-        alert('Gastronomia aggiunta ai preferiti!');
         this.favoritedGastronomies.push(gastronomiaId);
       },
       error => {
@@ -238,7 +237,6 @@ export class GastronomiaComponent implements OnInit {
     this.jsonService.rimuoviPreferitiGastronomia(gastronomiaId).subscribe(
       response => {
         console.log('Gastronomia rimossa con successo dai preferiti!', response);
-        alert('Gastronomia rimossa dai preferiti!');
         this.favoritedGastronomies = this.favoritedGastronomies.filter(id => id !== gastronomiaId);
       },
       error => {
