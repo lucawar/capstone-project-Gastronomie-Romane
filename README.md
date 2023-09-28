@@ -84,8 +84,12 @@ Ora sei pronto per eseguire l'applicazione sul tuo sistema locale.
    "styles": [
      "node_modules/bootstrap/dist/css/bootstrap.min.css",
      "src/styles.css"
-   ],   
-
+   ],
+     
+   - Esegui il seguente comando per aggiungere Bootstrap-icon al tuo progetto:
+     ```bash
+     npm install bootstrap
+     ```
 
 ## 🖊️ AUTORE
 Luca Guerra
