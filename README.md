@@ -28,17 +28,63 @@
 
 **Configurazione Angular**:
 
-Assicurarsi di avere installato correttamente ANGULAR nel proprio PC.
+Prima di eseguire l'applicazione "Gastronomie Romane", assicurati di avere installato Node.js, npm e Angular CLI sul tuo sistema. Se non li hai già installati, ecco come fare:
 
-Installare Node.js & npm 
+### Prerequisiti
 
-Installare la versione più recente di Angular: npm install -g @angular/cli
+1. **Node.js e npm**: Angular richiede Node.js e npm per eseguire e gestire le dipendenze.
 
-Clonare il progetto ed eseguire le seguenti istruzioni per avviare l'app:
+### Passaggi per l'installazione
 
-Aprire il terminale e digitare:  npm i
+1. **Installare Node.js e npm**:
+   - Vai al sito web di Node.js: [https://nodejs.org/](https://nodejs.org/)
+   - Scarica e installa la versione LTS di Node.js seguendo le istruzioni sul sito web.
+   - Verifica che l'installazione sia stata eseguita correttamente aprendo un terminale o prompt dei comandi e digitando:
+     ```bash
+     node -v
+     npm -v
+     ```
+     Questi comandi mostreranno le versioni di Node.js e npm installate.
 
-Avviare l'app Angular nel proprio IDE tramite il comando:  ng s -o
+2. **Installare Angular CLI**:
+   - Apri un terminale o prompt dei comandi.
+   - Esegui il seguente comando per installare Angular CLI globalmente sul tuo sistema:
+     ```bash
+     npm install -g @angular/cli
+     ```
+   - Verifica che Angular CLI sia stato installato correttamente con il comando:
+     ```bash
+     ng --version
+     ```
+
+3. **Installare le dipendenze del progetto**:
+   - Naviga nella directory principale del progetto usando il terminale.
+   - Esegui il comando:
+     ```bash
+     npm install
+     ```
+     Questo comando installerà tutte le dipendenze necessarie del progetto, inclusi Bootstrap e Bootstrap Icons se sono elencati nel file `package.json`.
+
+Ora sei pronto per eseguire l'applicazione sul tuo sistema locale.
+
+### Esecuzione dell'applicazione
+
+1. Naviga nella directory principale del progetto (dove si trova il file `angular.json`) usando il terminale.
+2. Esegui il comando:
+   ```bash
+   ng s -o
+3. Installazione di bootstrap e bootstrap icon
+    - Esegui il seguente comando per aggiungere Bootstrap al tuo progetto:
+     ```bash
+     npm install bootstrap
+     ```
+   Dopo l'installazione, assicurati di aggiungere il riferimento al file CSS di Bootstrap nel file `angular.json` o `styles.css` del tuo progetto Angular. Ad esempio, in `angular.json`:
+
+   ```json
+   "styles": [
+     "node_modules/bootstrap/dist/css/bootstrap.min.css",
+     "src/styles.css"
+   ],   
 
 
 ## 🖊️ AUTORE
