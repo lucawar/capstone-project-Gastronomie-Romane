@@ -91,6 +91,40 @@ Ora sei pronto per eseguire l'applicazione sul tuo sistema locale.
      npm install bootstrap
      ```
      
+     ## Installazione del Progetto Java Spring
+
+### Prerequisiti
+
+- Avere installato Java JDK (versione 8 o superiore).
+- Avere installato Maven (si consiglia l'ultima versione disponibile).
+
+### Passaggi per l'installazione
+
+1. **Scaricare il Progetto**:
+   - Clona o scarica il progetto dal repository GitHub ( https://github.com/lucawar/capstone-project/tree/main ) su una directory del tuo computer.
+
+2. **Navigare nella Directory del Progetto**:
+   - Apri un terminale e naviga nella directory in cui hai clonato o scaricato il progetto.
+
+3. **Installare le Dipendenze**:
+   - Esegui il comando seguente per installare tutte le dipendenze necessarie specificate nel `pom.xml` del progetto:
+     ```bash
+     mvn clean install
+     ```
+
+4. **Eseguire il Progetto**:
+   - Esegui il comando seguente per avviare il progetto:
+     ```bash
+     mvn spring-boot:run
+     ```
+
+Con questi comandi, il progetto Spring dovrebbe essere ora in esecuzione e pronto per l'uso. Assicurati che il tuo database PostgreSQL sia configurato correttamente e in esecuzione prima di avviare il progetto, dato che hai una dipendenza dal driver PostgreSQL.
+
+### Configurazione
+
+Assicurati di configurare il file `application.properties` nella directory `src/main/resources` del progetto per impostare le configurazioni del database, della sicurezza e delle altre proprietà necessarie per il progetto.
+
+
 ## 🖊️ AUTORE
 Luca Guerra
 
