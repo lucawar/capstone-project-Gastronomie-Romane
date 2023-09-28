@@ -42,6 +42,6 @@ Avviare l'app Angular nel proprio IDE tramite il comando:  ng s -o
 
 
 ## 🖊️ AUTORE
-
+Luca Guerra
 
  
