@@ -44,9 +44,6 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     alert("CIAO,RIEFFETTUA IL LOGIN PER ACCEDERE")
-
-
-
   }
 
   isLoggedIn(): boolean {
