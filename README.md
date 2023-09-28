@@ -90,7 +90,7 @@ Ora sei pronto per eseguire l'applicazione sul tuo sistema locale.
      ```bash
      npm install bootstrap
      ```
-
+     
 ## 🖊️ AUTORE
 Luca Guerra
 
