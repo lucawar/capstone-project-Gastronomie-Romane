@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
   <div class="container-fluid ">
-    <div class="navbar-left">
+    <div>
       <a class="navbar-brand" href="#">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
@@ -30,7 +30,7 @@
         <img src="../../../assets/logo_capstone_project_1-PhotoRoom.png-PhotoRoom.png" alt="logo" class="logo m-2">
     </div>
 
-    <div class="navbar-right">
+    <div>
       <ul class="navbar-nav">
         <li *ngIf="!isLoggedIn()">
           <a class="nav-link link-danger text-white" [routerLink]="['login']" routerLinkActive="active">Login</a>

@@ -19,6 +19,7 @@ import { RecensioneComponent } from './components/recensione/recensione.componen
 import { PrenotazioneComponent } from './components/prenotazione/prenotazione.component';
 import { ProfiloUserComponent } from './components/profilo-user/profilo-user.component';
 import { DettagliGastronomiaComponent } from './components/dettagli-gastronomia/dettagli-gastronomia.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Route[] = [
   {
@@ -67,7 +68,8 @@ const routes: Route[] = [
     RecensioneComponent,
     PrenotazioneComponent,
     ProfiloUserComponent,
-    DettagliGastronomiaComponent
+    DettagliGastronomiaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(routes) , FormsModule, HttpClientModule, NgxPaginationModule
